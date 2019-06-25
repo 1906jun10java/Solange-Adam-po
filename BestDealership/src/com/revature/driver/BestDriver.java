@@ -1,9 +1,12 @@
 package com.revature.driver;
 
+import com.revature.service.ProgramOperations;
+
 public class BestDriver {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		ProgramOperations.startProgram();
+		ProgramOperations.endProgram();
 
 	}
 
