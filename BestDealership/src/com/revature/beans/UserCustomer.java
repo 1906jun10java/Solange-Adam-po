@@ -19,6 +19,8 @@ public class UserCustomer extends User {
 		this.offersMade = offersMade;
 		this.income = income;
 		this.creditScore = creditScore;
+		
+		
 	}
 	
 	//Getters and Setters
