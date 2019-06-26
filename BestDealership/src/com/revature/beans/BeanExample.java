@@ -1,11 +1,21 @@
 package com.revature.beans;
 
 public class BeanExample {
-	public int x = 0;
+	private int x = 0;
+     
+	private int y = 5;
+	public int getY() {
+		return y;
+	}
 
-	public BeanExample(int x) {
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public BeanExample(int x, int y) {
 		super();
 		this.x = x;
+		this.y = y;
 	}
 
 	public int getX() {
@@ -20,4 +30,6 @@ public class BeanExample {
 	public String toString() {
 		return "BeanExample [x=" + x + "]";
 	}
+	
+	
 }
