@@ -1,39 +1,50 @@
 package com.revature.data;
 
-
 import java.util.HashMap;
 import java.util.Random;
+import com.revature.beans.User;
 
-import com.revature.beans.Car;
-
-public class FirstStructure {
-
+public class LocalUserData {
 	// TODO create a data structure to hold users
-	// TODO create a data structure to hold offers
-	static HashMap<Integer, Car> lotInventory = new HashMap<>();
 
 
-	public static void buildTestLot() {
-		Random randInt = new Random();
-		int skuDecider = randInt.nextInt((600000 - 100000) + 1) + 100000;
-		if (lotInventory.containsKey(skuDecider)) {
-			buildTestLot();
+	static HashMap<String, User> userDataBase = new HashMap<>();
+
+	
+	//TODO Change this to get the database from the server, for now - non-persistent
+	public static void getUserDataBase() {
+		User masterControl = new User("MasterControl", "password", "Master", "Contorl", 1, 0);
+		User testCustomer = new User("customer", "password", "Test", "Customer", 0, 0);
+		userDataBase.put("MasterControl", masterControl);
+		userDataBase.put("customer", testCustomer);
+		System.out.println(userDataBase.values());
+	}
+
+	public static void addNewUser() {
+		//TODO get input from user, May want to have different userAccountBuilders at some point 
+		String newUserID = "Input from User Somehow";
+		int accessLevel = 1;  //TODO Get user input here say - "please" to get access to employee
+		
+		if (userDataBase.containsKey(newUserID)) {
+			System.out.println(newUserID + " is already taken.  "
+					+ "Please select a different user name:");
+			addNewUser();
 		} else {
-			lotInventory.put(skuDecider, carBuilder(skuDecider));
+			userDataBase.put(newUserID, userAccountBuilder(newUserID, accessLevel));
 		}
 	}
 
-	public static Car carBuilder(int sku) {
-		String make = randomMake();
-		String model = randomModel(make);
-		String color = randomColor();
-		int miles = randomMiles();
-		int year = randomYear();
-		double price = 150000.00 - miles + year;
-
-		Car nextCar = new Car(sku, make, model, color, miles, year, price);
-		System.out.println("Adding to Lot Car:  " + nextCar);
-		return nextCar;
+	public static User userAccountBuilder(String newUserID, int accessLevel) {
+		User newUser = new User();
+		newUser.setUserName(newUserID);
+		newUser.setAccessLevel(accessLevel);
+		newUser.setPassword("password"); //TODO Get User Input for all of these
+		newUser.setFirstName("firstName");
+		newUser.setLastName("lastName");
+		
+		
+		
+		return newUser;
 	}
 
 	private static int randomYear() {
@@ -140,9 +151,7 @@ public class FirstStructure {
 		}
 		return nextMake;
 	}
-	
-	public static void lotInventoryPrint() {
-		System.out.println(lotInventory.values());
-	}
 
 }
+
+
