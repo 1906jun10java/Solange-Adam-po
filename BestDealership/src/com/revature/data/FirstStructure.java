@@ -7,13 +7,11 @@ import java.util.Random;
 import com.revature.beans.Car;
 
 public class FirstStructure {
-	int K = 1002;
 
-	// TODO create a data structure to hold cars
 	// TODO create a data structure to hold users
 	// TODO create a data structure to hold offers
 	static HashMap<Integer, Car> lotInventory = new HashMap<>();
-	static ArrayList<String> carMakes = new ArrayList<>();
+
 
 	public static void buildTestLot() {
 		Random randInt = new Random();
