@@ -55,7 +55,7 @@ public class Car {
 		return color;
 	}
 	public void setColor(String color) {
-		color = color;
+		this.color = color;
 	}
 	public int getMiles() {
 		return miles;
