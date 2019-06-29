@@ -1,6 +1,6 @@
 package com.revature.data;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.Random;
 
@@ -139,6 +139,10 @@ public class FirstStructure {
 			break;
 		}
 		return nextMake;
+	}
+	
+	public static void lotInventoryPrint() {
+		System.out.println(lotInventory.values());
 	}
 
 }

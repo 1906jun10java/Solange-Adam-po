@@ -1,6 +1,7 @@
 package com.revature.driver;
 
 import com.revature.data.FirstStructure;
+import com.revature.data.LocalUserData;
 import com.revature.service.ProgramOperations;
 
 public class BestDriver {
@@ -11,7 +12,8 @@ public class BestDriver {
 		FirstStructure.buildTestLot();
 		FirstStructure.buildTestLot();
 		FirstStructure.buildTestLot();
-		
+		LocalUserData.getUserDataBase();
+		FirstStructure.lotInventoryPrint();
 		//TODO add more methods of the program
 		ProgramOperations.endProgram();
 
