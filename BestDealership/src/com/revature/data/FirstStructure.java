@@ -32,7 +32,7 @@ public class FirstStructure {
 		double price = 150000.00 - miles + year;
 
 		Car nextCar = new Car(sku, make, model, color, miles, year, price);
-		System.out.println("Adding to Lot Car:  " + nextCar);
+		System.out.println("Adding to Lot Car:  \n" + nextCar);
 		return nextCar;
 	}
 

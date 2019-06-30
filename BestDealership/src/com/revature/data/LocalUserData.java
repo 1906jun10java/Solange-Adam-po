@@ -17,7 +17,7 @@ public class LocalUserData {
 		User testCustomer = new User("customer", "password", "Test", "Customer", 0, 0);
 		userDataBase.put("MasterControl", masterControl);
 		userDataBase.put("customer", testCustomer);
-		System.out.println(userDataBase.values());
+//		System.out.println(userDataBase.values());
 	}
 
 	public static void addNewUser() {
@@ -46,112 +46,6 @@ public class LocalUserData {
 		
 		return newUser;
 	}
-
-	private static int randomYear() {
-		Random randInt = new Random();
-		int yearDecider = randInt.nextInt((1959 - 1955) + 1) + 1955;
-		return yearDecider;
-	}
-
-	private static int randomMiles() {
-		Random randInt = new Random();
-		int milesDecider = randInt.nextInt((25000 - 500) + 1) + 500;
-		return milesDecider;
-	}
-
-	private static String randomColor() {
-		Random randInt = new Random();
-		int colorDecider = randInt.nextInt(6) + 1;
-		String nextColor = "nextColor";
-		switch (colorDecider) {
-		case 1:
-			nextColor = "Teal";
-			break;
-		case 2:
-			nextColor = "Seafoam Green";
-			break;
-		case 3:
-			nextColor = "Indigo";
-			break;
-		case 4:
-			nextColor = "Coral";
-			break;
-		case 5:
-			nextColor = "Salmon";
-			break;
-		case 6:
-			nextColor = "Magnolia";
-			break;
-		}
-		return nextColor;
-	}
-
-	private static String randomModel(String nextMake) {
-		Random randInt = new Random();
-		int modelDecider = randInt.nextInt(3) + 1;
-		String nextModel = "nextModel";
-		switch (nextMake) {
-		case "Dodge":
-			switch (modelDecider) {
-			case 1:
-				nextModel = "Royal Lancer";
-				break;
-			case 2:
-				nextModel = "Coronet";
-				break;
-			case 3:
-				nextModel = "C-Series Truck";
-				break;
-			}
-			break;
-		case "Chrysler":
-			switch (modelDecider) {
-			case 1:
-				nextModel = "300";
-				break;
-			case 2:
-				nextModel = "Imperial";
-				break;
-			case 3:
-				nextModel = "New Yorker";
-				break;
-			}
-			break;
-		case "DeSoto":
-			switch (modelDecider) {
-			case 1:
-				nextModel = "FireDome";
-				break;
-			case 2:
-				nextModel = "Adventurer";
-				break;
-			case 3:
-				nextModel = "FireFlite";
-				break;
-			}
-			break;
-		}		
-		return nextModel;
-	}
-
-	public static String randomMake() {
-		Random randInt = new Random();
-		int makeDecider = randInt.nextInt(3) + 1;
-		String nextMake = "nextMake";
-		switch (makeDecider) {
-		case 1:
-			nextMake = "Dodge";
-			break;
-		case 2:
-			nextMake = "Chrysler";
-			break;
-		case 3:
-			nextMake = "DeSoto";
-			break;
-		}
-		return nextMake;
-	}
-
 }
 
 
