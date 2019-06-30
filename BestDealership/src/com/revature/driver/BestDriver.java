@@ -10,7 +10,7 @@ public class BestDriver {
 		ProgramOperations.startProgram();
 		ProgramOperations.logInMenu();
 		
-		LocalUserData.getUserDataBase();
+//		LocalUserData.getUserDataBase();
 //		FirstStructure.lotInventoryPrint();
 		//TODO add more methods of the program
 		ProgramOperations.endProgram();
