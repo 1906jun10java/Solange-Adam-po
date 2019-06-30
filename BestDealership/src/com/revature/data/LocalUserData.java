@@ -8,7 +8,7 @@ public class LocalUserData {
 	// TODO create a data structure to hold users
 
 
-	static HashMap<String, User> userDataBase = new HashMap<>();
+	public static HashMap<String, User> userDataBase = new HashMap<>();
 
 	
 	//TODO Change this to get the database from the server, for now - non-persistent

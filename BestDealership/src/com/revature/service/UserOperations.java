@@ -1,37 +1,45 @@
 package com.revature.service;
 
+import java.util.Scanner;
+import com.revature.data.*;
+
 public class UserOperations {
+	static Scanner userOps = new Scanner(System.in);
 
 	public static void systemLogIn() {
 //	System.out.println("Logging you in, Shepard");
 		int logInSwitch = 0;
 		while (logInSwitch != 1) {
-			System.out.println("Please enter your Username");
-			// TODO get username
-			System.out.println("Please enter your password");
-			// TODO password check agains login
-			if(logIn check true) {
-				if(Employee) {
-					logInSwitch = 1;
-					employeeMainMenu();
+			System.out.println("Please enter your Username or press \"1\" to exit");
+			String testUserName = userOps.next();
+			char exitInput = 1;
+			if(testUserName.length() <= 1 && testUserName.charAt(0) == exitInput) {
+				logInSwitch = 1;
+			} else if (LocalUserData.userDataBase.containsKey(testUserName)) {
+				System.out.println("Please enter your password");
+				// TODO password check agains login
+				if(true) {
+					if(true) {
+						employeeMainMenu();
+						logInSwitch = 1;
+					} else if(true){
+						customerMainMenu();
+						logInSwitch = 1;
+					}
 				} else {
-					logInSwitch = 1;
-					customerMainMenu();
+					System.out.println("Log in information is incorrect");
+					systemLogIn();
 				}
-			} else {
-				System.out.println("Log in information is incorrect");
-				systemLogIn();
 			}
 		}
 	}
 
 	private static void customerMainMenu() {
-		// TODO Auto-generated method stub
+		System.out.println("Employee Menu... actions taken... logged out");
 		
 	}
 
 	private static void employeeMainMenu() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Customer Menu... actions taken... logged out");	
 	}
 }
