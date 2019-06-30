@@ -1,7 +1,7 @@
 package com.revature.beans;
 
 public class UserCustomer extends User {
-	private final int accessLevel = 0;
+	private final int accessLevel = 1;
 	private int offersMade = 0;
 	
 	//Additional information that may or may not be used/implemented
