@@ -1,6 +1,8 @@
 package com.revature.service;
 
 import java.util.Scanner;
+
+import com.revature.beans.User;
 import com.revature.data.*;
 
 public class UserOperations {
@@ -16,13 +18,15 @@ public class UserOperations {
 			if(testUserName.length() <= 1 && testUserName.charAt(0) == exitInput) {
 				logInSwitch = 1;
 			} else if (LocalUserData.userDataBase.containsKey(testUserName)) {
+				User currentUser = LocalUserData.userDataBase.get(testUserName);
 				System.out.println("Please enter your password");
-				// TODO password check agains login
-				if(true) {
-					if(true) {
+				// TODO password check against login
+				String testPassword = userOps.next();
+				if(currentUser.getPassword().equals(testPassword)) {
+					if(currentUser.getAccessLevel() == 2) {
 						employeeMainMenu();
 						logInSwitch = 1;
-					} else if(true){
+					} else if(currentUser.getAccessLevel() == 1){
 						customerMainMenu();
 						logInSwitch = 1;
 					}
