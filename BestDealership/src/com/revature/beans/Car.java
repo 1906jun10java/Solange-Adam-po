@@ -10,7 +10,7 @@ public class Car {
 	private int year = 9999;
 	private double price = 150000.00;
 	
-	
+	//constructors
 	public Car() {
 		super();
 		// TODO Auto-generated constructor stub
