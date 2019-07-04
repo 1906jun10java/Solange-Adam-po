@@ -38,7 +38,7 @@ public class UserOperations {
 	}
 
 	private static void customerMainMenu() {
-		CustomerActions.placeOffer();
+		CustomerActions.placeOffer(0,0);
 		
 		
 		

@@ -15,7 +15,7 @@ public class ProgramOperations {
 		System.out.println("--------------------------------" + "\nStarting Best Dealership Interface"
 				+ "\n--------------------------------\n");
 		// TODO add sleep function
-		vehicleAdder(3);
+		vehicleAdder(16);
 		LocalUserData.getUserDataBase();
 //		FirstStructure.lotInventoryPrint();
 		// TODO add user database generator (for testing reasons)
