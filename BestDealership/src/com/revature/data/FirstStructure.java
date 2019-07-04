@@ -10,7 +10,7 @@ public class FirstStructure {
 
 	// TODO create a data structure to hold users
 	// TODO create a data structure to hold offers
-	static HashMap<Integer, Car> lotInventory = new HashMap<>();
+	public static HashMap<Integer, Car> lotInventory = new HashMap<>();
 
 
 	public static void buildTestLot() {

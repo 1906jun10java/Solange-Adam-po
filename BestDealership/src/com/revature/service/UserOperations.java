@@ -38,11 +38,15 @@ public class UserOperations {
 	}
 
 	private static void customerMainMenu() {
-		System.out.println("Customer Menu... actions taken... logged out");
+		CustomerActions.placeOffer();
+		
+		
 		
 	}
 
 	private static void employeeMainMenu() {
 		System.out.println("Employee Menu... actions taken... logged out");	
 	}
+	
+	
 }

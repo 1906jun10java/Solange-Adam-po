@@ -6,9 +6,10 @@ import com.revature.data.FirstStructure;
 import com.revature.data.LocalUserData;
 
 public class ProgramOperations {
-
-	ScannerFinder sf = ScannerFinder.getSFDouble();
-	Scanner sc = sf.runScanner();
+	
+	//TODO Replace limited scope Scanner with this Scanner
+	ScannerFinder scannerRomeo = ScannerFinder.getScannerInstance();
+	Scanner scannerActual = scannerRomeo.runScanner();
 
 	public static void startProgram() {
 		System.out.println("--------------------------------" + "\nStarting Best Dealership Interface"
