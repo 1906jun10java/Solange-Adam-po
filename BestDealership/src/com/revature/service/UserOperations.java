@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.revature.beans.User;
@@ -7,6 +8,7 @@ import com.revature.data.*;
 
 public class UserOperations {
 	static Scanner userOps = new Scanner(System.in);
+	public static ArrayList<String> currentUserList = new ArrayList<>();
 
 	public static void systemLogIn() {
 		int logInSwitch = 0;
@@ -26,6 +28,7 @@ public class UserOperations {
 						employeeMainMenu();
 						logInSwitch = 1;
 					} else if(currentUser.getAccessLevel() == 1){
+						currentUserList.add(testUserName);
 						customerMainMenu();
 						logInSwitch = 1;	
 					}
@@ -38,7 +41,7 @@ public class UserOperations {
 	}
 
 	private static void customerMainMenu() {
-		CustomerActions.placeOffer(0,0);
+		CustomerActions.placeOffer(0,1);
 		
 		
 		
