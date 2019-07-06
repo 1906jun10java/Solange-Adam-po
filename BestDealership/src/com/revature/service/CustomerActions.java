@@ -2,12 +2,15 @@ package com.revature.service;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.revature.data.FirstStructure;
 import com.revature.data.OffersData;
 
 public interface CustomerActions {
 	ScannerFinder scannerRomeo = ScannerFinder.getScannerInstance();
 	Scanner scannerActual = scannerRomeo.runScanner();
+	public static Logger log = Logger.getRootLogger();
 
 	public static void placeOffer(int indexMover, int pageMover) // first call of this needs to be 0, 1
 	{
@@ -50,24 +53,45 @@ public interface CustomerActions {
 				menuChoice = 1;
 				break;
 			case "2":
+				try {
 				System.out.println("Creating Offer for:  " + currentIndex + 1);
 				OffersData.createOffer(currentIndex + 1);
+				} catch (Exception e){
+					System.out.println("Invaid selection, but congratulatios.  "
+							+ "This invalid excption only happens in super special situations");
+					log.info(e);
+				}
 				menuChoice = 2;
 				break;
 			case "3":
-				System.out.println("Creating Offer for:  " + currentIndex);
-				OffersData.createOffer(currentIndex + 0);
-				menuChoice = 3;
+				try {
+				System.out.println("Creating Offer for:  " + currentIndex + 2);
+				OffersData.createOffer(currentIndex + 2);
+				} catch (Exception e){
+					System.out.println("Invaid selection, but congratulatios.  "
+							+ "This invalid excption only happens in super special situations");
+					log.info(e);
+				}
 				break;
 			case "4":
-				System.out.println("Creating Offer for:  " + currentIndex);
-				OffersData.createOffer(currentIndex + 0);
-				menuChoice = 4;
+				try {
+				System.out.println("Creating Offer for:  " + currentIndex + 3);
+				OffersData.createOffer(currentIndex + 3);
+				} catch (Exception e){
+					System.out.println("Invaid selection, but congratulatios.  "
+							+ "This invalid excption only happens in super special situations");
+					log.info(e);
+				}
 				break;
 			case "5":
-				System.out.println("Creating Offer for:  " + currentIndex);
-				OffersData.createOffer(currentIndex + 0);
-				menuChoice = 5;
+				try {
+				System.out.println("Creating Offer for:  " + currentIndex + 4);
+				OffersData.createOffer(currentIndex + 4);
+				} catch (Exception e){
+					System.out.println("Invaid selection, but congratulatios.  "
+							+ "This invalid excption only happens in super special situations");
+					log.info(e);
+				}
 				break;
 			case "6":
 				int indexMover = currentIndex + 5;
