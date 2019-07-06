@@ -49,14 +49,14 @@ public interface CustomerActions {
 			switch (carMenu) {
 			case "1":
 				System.out.println("Creating Offer for:  " + FirstStructure.usedSKU.get(currentIndex + 0));
-				OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 0));
+				OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 0), getOffer());
 				menuChoice = 1;
 				break;
 			case "2":
 				try {
-				System.out.println("Creating Offer for:  " + currentIndex + 1);
-				OffersData.createOffer(currentIndex + 1);
-				} catch (Exception e){
+					System.out.println("Creating Offer for:  " + FirstStructure.usedSKU.get(currentIndex + 1));
+					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 1), getOffer());
+				} catch (Exception e) {
 					System.out.println("Invaid selection, but congratulatios.  "
 							+ "This invalid excption only happens in super special situations");
 					log.info(e);
@@ -65,9 +65,9 @@ public interface CustomerActions {
 				break;
 			case "3":
 				try {
-				System.out.println("Creating Offer for:  " + currentIndex + 2);
-				OffersData.createOffer(currentIndex + 2);
-				} catch (Exception e){
+					System.out.println("Creating Offer for:  " + FirstStructure.usedSKU.get(currentIndex + 2));
+					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 2), getOffer());
+				} catch (Exception e) {
 					System.out.println("Invaid selection, but congratulatios.  "
 							+ "This invalid excption only happens in super special situations");
 					log.info(e);
@@ -75,9 +75,9 @@ public interface CustomerActions {
 				break;
 			case "4":
 				try {
-				System.out.println("Creating Offer for:  " + currentIndex + 3);
-				OffersData.createOffer(currentIndex + 3);
-				} catch (Exception e){
+					System.out.println("Creating Offer for:  " + FirstStructure.usedSKU.get(currentIndex + 3));
+					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 3), getOffer());
+				} catch (Exception e) {
 					System.out.println("Invaid selection, but congratulatios.  "
 							+ "This invalid excption only happens in super special situations");
 					log.info(e);
@@ -85,9 +85,9 @@ public interface CustomerActions {
 				break;
 			case "5":
 				try {
-				System.out.println("Creating Offer for:  " + currentIndex + 4);
-				OffersData.createOffer(currentIndex + 4);
-				} catch (Exception e){
+					System.out.println("Creating Offer for:  " + FirstStructure.usedSKU.get(currentIndex + 4));
+					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 4), getOffer());
+				} catch (Exception e) {
 					System.out.println("Invaid selection, but congratulatios.  "
 							+ "This invalid excption only happens in super special situations");
 					log.info(e);
@@ -107,4 +107,46 @@ public interface CustomerActions {
 		}
 		return menuChoice;
 	}
+
+	public static double getOffer() {
+		System.out.println("Please enter your offer or \"1\" to exit");
+		double offerAmount = 0.0;
+		String offerAmountInput = scannerActual.next();
+		//USING .equals MAKES IT WAY BETTER THEN THE COMPLICATED STRING VERSION
+		if (offerAmountInput.equals("1")) {
+			return offerAmount;
+		} else {
+			try {
+				offerAmount = Double.parseDouble(offerAmountInput);
+			} catch (Exception e) {
+				log.info(e);
+				getOffer();
+			}
+		}
+
+		return offerAmount;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
