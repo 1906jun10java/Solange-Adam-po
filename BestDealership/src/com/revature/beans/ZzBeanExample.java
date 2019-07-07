@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-public class BeanExample {
+public class ZzBeanExample {
 	private int x = 0;
      
 	private int y = 5;
@@ -12,7 +12,7 @@ public class BeanExample {
 		this.y = y;
 	}
 
-	public BeanExample(int x, int y) {
+	public ZzBeanExample(int x, int y) {
 		super();
 		this.x = x;
 		this.y = y;

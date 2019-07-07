@@ -1,5 +1,5 @@
 package com.revature.beans;
 
-public enum CarMake {
+public enum ZzCarMakeEnum {
 	FORD,HYUNDAI,BUICK
 }

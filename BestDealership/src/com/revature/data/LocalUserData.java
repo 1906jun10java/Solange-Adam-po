@@ -17,7 +17,7 @@ public class LocalUserData {
 		User testCustomer = new User("customer", "password", "Test", "Customer", 1);
 		userDataBase.put("MasterControl", masterControl);
 		userDataBase.put("customer", testCustomer);
-		System.out.println(userDataBase.values());
+//		System.out.println(userDataBase.values());
 	}
 
 	public static void addNewUser() {
