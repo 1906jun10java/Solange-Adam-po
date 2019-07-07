@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import com.revature.data.FirstStructure;
 import com.revature.data.OffersData;
 
-public interface CustomerActions {
+public interface CustomerOffers {
 	ScannerFinder scannerRomeo = ScannerFinder.getScannerInstance();
 	Scanner scannerActual = scannerRomeo.runScanner();
 	public static Logger log = Logger.getRootLogger();

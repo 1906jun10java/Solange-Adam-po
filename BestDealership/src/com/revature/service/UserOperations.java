@@ -58,10 +58,11 @@ public class UserOperations {
 				
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(0)) {
 				// place offer menu
-				CustomerActions.placeOffer(0, 1);
+				CustomerOffers.placeOffer(0, 1);
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(2)) {
 				System.out.println("Viewing your cars");
+				OffersData.showOffers();
 				// view owned cars and offers
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
 				System.out.println("Logging you out");

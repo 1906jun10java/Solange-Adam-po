@@ -1,5 +1,7 @@
 package com.revature.beans;
 
+import com.revature.data.FirstStructure;
+
 public class Offer {
 	private int offerNumber = 0;
 	private String customer = "CustomerUserNameHere";
@@ -58,8 +60,11 @@ public class Offer {
 
 	@Override
 	public String toString() {
-		return "Offer [offerNumber=" + offerNumber + ", customer=" + customer + ", carSKU=" + carSKU + ", askingPrice="
-				+ askingPrice + ", offerMade=" + offerMade + "]";
+		return ("\nYou made an offer of " + offerMade + " for the: \n" 
+				+ FirstStructure.lotInventory.get(carSKU) + "\n ");
+		
+//		return "Offer [offerNumber=" + offerNumber + ", customer=" + customer + ", carSKU=" + carSKU + ", askingPrice="
+//				+ askingPrice + ", offerMade=" + offerMade + "]";
 	}
 
 }

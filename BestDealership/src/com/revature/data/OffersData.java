@@ -8,8 +8,11 @@ import com.revature.beans.Offer;
 import com.revature.service.UserOperations;
 
 public class OffersData {
-	
-	public static HashMap<Integer, Offer> currentOffers = new HashMap<>();
+	//All offers by customer
+	public static HashMap<String, ArrayList<Offer>> customerOffers = new HashMap<>();
+	//All offer objects
+	public static ArrayList<Offer> offersByCustomer = new ArrayList<>();
+	//ArrayList for indexing and unique ID creation
 	public static ArrayList<Integer> currentOffersNumber = new ArrayList<>();
 	
 	public static int getCurrentOfferNumber() {
@@ -32,7 +35,13 @@ public class OffersData {
 		Offer offer = new Offer(offerNumber, customer, sku, price, offerAmount);
 		System.out.println("Your offer has been made:\n" + offer);
 		currentOffersNumber.add(offerNumber);
-		currentOffers.put(offerNumber, offer);
+		offersByCustomer.add(offer);
+		customerOffers.put(customer, offersByCustomer);
+		return true;
+	}
+	
+	public static boolean showOffers() {
+		System.out.println("\n " + customerOffers.get(UserOperations.currentUserList.get(0)) + "\n ");
 		return true;
 	}
 

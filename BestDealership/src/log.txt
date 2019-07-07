@@ -1,3 +1,4 @@
 2019-07-05 15:11:31 INFO  root:61 - java.lang.NullPointerException
 2019-07-05 15:32:46 INFO  root:73 - java.lang.NullPointerException
 2019-07-06 19:02:47 INFO  root:83 - java.lang.NullPointerException
+2019-07-06 19:43:33 INFO  root:122 - java.lang.NumberFormatException: For input string: "tod"
