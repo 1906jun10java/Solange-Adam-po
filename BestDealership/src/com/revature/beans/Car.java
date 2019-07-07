@@ -74,7 +74,7 @@ public class Car {
 	@Override
 	public String toString() {
 		return (year + " " + make + " " + model + " | Colour:  " + color 
-				+ " | " + miles + " miles | Asking $" + price + "\n ");
+				+ " | " + miles + " miles | Asking $" + price + " | SKU#" + sku + "\n ");
 //		return "Car [sku=" + sku + ", color=" + color + ", make=" + make + ", model=" + model + ", miles=" + miles
 //				+ ", year=" + year + ", price=" + price + "]\n";
 	}

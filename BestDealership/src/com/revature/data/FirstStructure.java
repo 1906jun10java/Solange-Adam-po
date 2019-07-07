@@ -13,43 +13,31 @@ public class FirstStructure {
 	public static HashMap<Integer, Car> lotInventory = new HashMap<>();
 	public static ArrayList<Integer> usedSKU = new ArrayList<Integer>();
 
-	public static void buildTestLot() {
+	public static void buildTestLot(int loudOn) {
 		Random randInt = new Random();
 		int skuDecider = randInt.nextInt((600000 - 100000) + 1) + 100000;
 		if (usedSKU.contains(skuDecider)) {
-			buildTestLot();
+			buildTestLot(loudOn);
 		} else {
 			usedSKU.add(skuDecider);
-			lotInventory.put(skuDecider, carBuilder(skuDecider));
+			lotInventory.put(skuDecider, carBuilder(skuDecider, loudOn));
 		}
 	}
-	
 
-	public static Car carBuilder(int sku) {
+	public static Car carBuilder(int sku, int loudOn) {
 		String make = randomMake();
 		String model = randomModel(make);
 		String color = randomColor();
 		int miles = randomMiles();
 		int year = randomYear();
 		int randomPriceAdjuster = miles;
+		// casting int to double
 		double priceAdjuster = (double) randomPriceAdjuster;
 		double price = (89999.99 - priceAdjuster);
 		Car nextCar = new Car(sku, make, model, color, miles, year, price);
-		return nextCar;
-	}
-	
-	public static Car carBuilderLoud(int sku) {
-		String make = randomMake();
-		String model = randomModel(make);
-		String color = randomColor();
-		int miles = randomMiles();
-		int year = randomYear();
-		int randomPriceAdjuster = miles;
-		double priceAdjuster = (double) randomPriceAdjuster;
-		double price = (89999.99 - priceAdjuster);
-
-		Car nextCar = new Car(sku, make, model, color, miles, year, price);
-		System.out.println("Adding to Lot Car:  \n" + nextCar);
+		if (loudOn == 1) {
+			System.out.println("Adding to Lot Car:  \n" + nextCar);
+		}
 		return nextCar;
 	}
 

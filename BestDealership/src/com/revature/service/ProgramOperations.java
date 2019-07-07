@@ -23,8 +23,18 @@ public class ProgramOperations {
 	public static void startProgram() {
 		System.out.println("--------------------------------" + "\nStarting Best Dealership Interface"
 				+ "\n--------------------------------\n");
-		// TODO add sleep function
-		vehicleAdder(16);
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("...");
+		vehicleAdder(16, 0);
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		LocalUserData.getUserDataBase();
 //		FirstStructure.lotInventoryPrint();
 		// TODO add user database generator (for testing reasons)
@@ -34,6 +44,12 @@ public class ProgramOperations {
 		// sign off message
 		System.out.println("--------------------------------" + "\nThank you for using Best Dealership Interface"
 				+ "\n--------------------------------\n");
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		System.out.println("End of Line");
 		// TODO add any networking data transfer needed
 	}
 
@@ -60,9 +76,7 @@ public class ProgramOperations {
 				logInMenu();
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(0)) {
 				UserMenu.systemLogIn();
-
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(2)) {
-				System.out.println("Creating a new account...somehow");
 				createNewAccount();
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
 				stayOn = 0;
@@ -148,10 +162,11 @@ public class ProgramOperations {
 		return accessLevel;
 	}
 
-	public static void vehicleAdder(int newCarNumber) {
+	public static void vehicleAdder(int newCarNumber, int loudOn) {
 		while (newCarNumber > 0) {
-			FirstStructure.buildTestLot();
+			FirstStructure.buildTestLot(loudOn);
 			newCarNumber--;
 		}
 	}
+
 }
