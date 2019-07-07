@@ -50,7 +50,7 @@ public class UserOperations {
 //			String logInMenuInput = "2";
 			String logInMenuInput = ScannerOperations.generalStringInput();
 			String possibleEntry = "1,2,3";
-			if (logInMenuInput.length() > 1 || logInMenuInput.charAt(0) != possibleEntry.charAt(0)
+			if (logInMenuInput.length() < 2 & logInMenuInput.charAt(0) != possibleEntry.charAt(0)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(2)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(4)) {
 				System.out.println("Invalid entry ...\n");
