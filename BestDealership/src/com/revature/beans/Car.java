@@ -23,6 +23,7 @@ public class Car {
 		this.make = make;
 		this.model = model;
 		this.year = year;
+		this.price = price;
 	}
 	
 	public double getPrice() {

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import com.revature.beans.Offer;
-import com.revature.service.UserOperations;
+import com.revature.service.UserMenu;
 
 public class OffersData {
 	//All offers by customer
@@ -30,7 +30,7 @@ public class OffersData {
 			return false;
 		}
 		int offerNumber = getCurrentOfferNumber();
-		String customer = UserOperations.currentUserList.get(0);
+		String customer = UserMenu.currentUserList.get(0);
 		Double price = FirstStructure.lotInventory.get(sku).getPrice();
 		Offer offer = new Offer(offerNumber, customer, sku, price, offerAmount);
 		System.out.println("Your offer has been made:\n" + offer);
@@ -41,7 +41,7 @@ public class OffersData {
 	}
 	
 	public static boolean showOffers() {
-		System.out.println("\n " + customerOffers.get(UserOperations.currentUserList.get(0)) + "\n ");
+		System.out.println("\n " + customerOffers.get(UserMenu.currentUserList.get(0)) + "\n ");
 		return true;
 	}
 

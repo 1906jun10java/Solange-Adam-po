@@ -2,7 +2,7 @@ package com.revature.service;
 
 import java.util.Scanner;
 
-public class ScannerOperations {
+public class ZzFirstTryAtScannerSingleton {
 
 	public static String generalStringInput() {
 		Scanner bScanner = new Scanner(System.in);

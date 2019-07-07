@@ -50,7 +50,7 @@ public class ProgramOperations {
 					+ "\n\"2\" to create a new account" + "\n\"3\" to exit\n--------\n ");
 			// TODO Remove problem solve
 //		String logInMenuInput = "2";
-			String logInMenuInput = ScannerOperations.generalStringInput();
+			String logInMenuInput = ZzFirstTryAtScannerSingleton.generalStringInput();
 			String possibleEntry = "1,2,3";
 			if (logInMenuInput.length() > 1 || logInMenuInput.charAt(0) != possibleEntry.charAt(0)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(2)
@@ -59,7 +59,7 @@ public class ProgramOperations {
 				// TODO put in a one second sleep here
 				logInMenu();
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(0)) {
-				UserOperations.systemLogIn();
+				UserMenu.systemLogIn();
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(2)) {
 				System.out.println("Creating a new account...somehow");

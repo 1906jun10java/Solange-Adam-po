@@ -6,7 +6,7 @@ import java.util.Scanner;
 import com.revature.beans.User;
 import com.revature.data.*;
 
-public class UserOperations {
+public class UserMenu {
 	static Scanner userOps = new Scanner(System.in);
 	public static ArrayList<String> currentUserList = new ArrayList<>();
 
@@ -48,7 +48,7 @@ public class UserOperations {
 					+ "\n\"2\" to view your current owned vehicles and offers" + "\n\"3\" to exit\n--------\n ");
 			// TODO Remove problem solve
 //			String logInMenuInput = "2";
-			String logInMenuInput = ScannerOperations.generalStringInput();
+			String logInMenuInput = ZzFirstTryAtScannerSingleton.generalStringInput();
 			String possibleEntry = "1,2,3";
 			if (logInMenuInput.length() < 2 & logInMenuInput.charAt(0) != possibleEntry.charAt(0)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(2)
@@ -74,6 +74,43 @@ public class UserOperations {
 
 	private static void employeeMainMenu() {
 		System.out.println("Employee Menu... actions taken... logged out");
-	}
+		int stayLoggedIn = 1;
+		while (stayLoggedIn == 1) {
+			System.out.println("Please enter: \n\"1\" to view our current inventory and place an offer, "
+					+ "\n\"2\" to view your current owned vehicles and offers" + "\n\"3\" to exit\n--------\n ");
+			// TODO Remove problem solve
+//			String logInMenuInput = "2";
+			String logInMenuInput = ZzFirstTryAtScannerSingleton.generalStringInput();
+			String possibleEntry = "1,2,3,4,5";
+			if (logInMenuInput.length() < 2 & logInMenuInput.charAt(0) != possibleEntry.charAt(0)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(2)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(4)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(6)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(8)) {
+				System.out.println("Invalid entry ...\n");
+				// TODO put in a one second sleep here
+				
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(0)) {
+				// add car
+				;
 
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(2)) {
+				System.out.println("Viewing your cars");
+				OffersData.showOffers();
+				// view owned cars and offers
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
+				System.out.println("Viewing your cars");
+				OffersData.showOffers();
+				// view owned cars and offers
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(6)) {
+				System.out.println("Viewing your cars");
+				OffersData.showOffers();
+				// view owned cars and offers
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(8)) {
+				System.out.println("Logging you out");
+				stayLoggedIn = 0;
+				//exit the menus and program
+			}
+		}
+	}
 }

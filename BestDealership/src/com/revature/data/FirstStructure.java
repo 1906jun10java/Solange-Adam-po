@@ -23,6 +23,7 @@ public class FirstStructure {
 			lotInventory.put(skuDecider, carBuilder(skuDecider));
 		}
 	}
+	
 
 	public static Car carBuilder(int sku) {
 		String make = randomMake();
@@ -30,7 +31,22 @@ public class FirstStructure {
 		String color = randomColor();
 		int miles = randomMiles();
 		int year = randomYear();
-		double price = 150000.00 - miles + year;
+		int randomPriceAdjuster = miles;
+		double priceAdjuster = (double) randomPriceAdjuster;
+		double price = (89999.99 - priceAdjuster);
+		Car nextCar = new Car(sku, make, model, color, miles, year, price);
+		return nextCar;
+	}
+	
+	public static Car carBuilderLoud(int sku) {
+		String make = randomMake();
+		String model = randomModel(make);
+		String color = randomColor();
+		int miles = randomMiles();
+		int year = randomYear();
+		int randomPriceAdjuster = miles;
+		double priceAdjuster = (double) randomPriceAdjuster;
+		double price = (89999.99 - priceAdjuster);
 
 		Car nextCar = new Car(sku, make, model, color, miles, year, price);
 		System.out.println("Adding to Lot Car:  \n" + nextCar);
