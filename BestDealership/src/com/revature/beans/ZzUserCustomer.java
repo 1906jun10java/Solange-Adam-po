@@ -1,6 +1,6 @@
 package com.revature.beans;
 
-public class UserCustomer extends User {
+public class ZzUserCustomer extends User {
 	private final int accessLevel = 1;
 	private int offersMade = 0;
 	
@@ -9,12 +9,12 @@ public class UserCustomer extends User {
 	private int creditScore = 0;
 	
 	//A no argument Constructor  (No-Args Constructor)
-	public UserCustomer() {
+	public ZzUserCustomer() {
 		super();
 	}
 		
 	//Constructor using fields
-	public UserCustomer(int offersMade, double income, int creditScore) {
+	public ZzUserCustomer(int offersMade, double income, int creditScore) {
 		super();
 		this.offersMade = offersMade;
 		this.income = income;

@@ -6,7 +6,7 @@ import java.util.Scanner;
 import com.revature.beans.User;
 import com.revature.data.*;
 
-public class UserOperations {
+public class UserMenu {
 	static Scanner userOps = new Scanner(System.in);
 	public static ArrayList<String> currentUserList = new ArrayList<>();
 
@@ -41,21 +41,22 @@ public class UserOperations {
 	}
 
 	private static void customerMainMenu() {
-		// TODO
+		System.out.println(
+				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn\n\n\n\n\n\n\n\n\n\n\n\n" + "--------Customer Menu--------");
 		int stayLoggedIn = 1;
 		while (stayLoggedIn == 1) {
 			System.out.println("Please enter: \n\"1\" to view our current inventory and place an offer, "
 					+ "\n\"2\" to view your current owned vehicles and offers" + "\n\"3\" to exit\n--------\n ");
 			// TODO Remove problem solve
 //			String logInMenuInput = "2";
-			String logInMenuInput = ScannerOperations.generalStringInput();
+			String logInMenuInput = ZzFirstTryAtScannerSingleton.generalStringInput();
 			String possibleEntry = "1,2,3";
-			if (logInMenuInput.length() > 1 || logInMenuInput.charAt(0) != possibleEntry.charAt(0)
+			if (logInMenuInput.length() < 2 & logInMenuInput.charAt(0) != possibleEntry.charAt(0)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(2)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(4)) {
 				System.out.println("Invalid entry ...\n");
 				// TODO put in a one second sleep here
-				
+
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(0)) {
 				// place offer menu
 				CustomerOffers.placeOffer(0, 1);
@@ -67,13 +68,52 @@ public class UserOperations {
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
 				System.out.println("Logging you out");
 				stayLoggedIn = 0;
-				//exit the menus and program
+				// exit the menus and program
 			}
 		}
 	}
 
 	private static void employeeMainMenu() {
-		System.out.println("Employee Menu... actions taken... logged out");
-	}
+		System.out.println(
+				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + "--------Employee Menu--------");
+		int stayLoggedIn = 1;
+		while (stayLoggedIn == 1) {
+			System.out.println("Please enter: \n\"1\" to add a vehicle to the lot "
+					+ "\n\"2\" to remove a vehicle from the lot" + "\n\"3\" to review current offers"
+					+ "\n\"4\" see current payments (under-construction)" + "\n\"5\" to exit\n--------\n ");
+			// TODO Remove problem solve
+//			String logInMenuInput = "2";
+			String logInMenuInput = ZzFirstTryAtScannerSingleton.generalStringInput();
+			String possibleEntry = "1,2,3,4,5";
+			if (logInMenuInput.length() < 2 & logInMenuInput.charAt(0) != possibleEntry.charAt(0)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(2)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(4)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(6)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(8)) {
+				System.out.println("Invalid entry ...\n");
+				// TODO put in a one second sleep here
 
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(0)) {
+				System.out.println("Adding car to lot");
+				ProgramOperations.vehicleAdder(1, 1);
+
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(2)) {
+				// TODO car select menu to Remove
+				EmployeeOperations.findInventory(0, 1);
+
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
+				// TODO See offers and review
+				OffersData.showOffers();
+
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(6)) {
+				// TODO See Payments
+				System.out.println("Currently unavailable, please contact your system administrator.  \n"  
+					+ "Current wait time is: 999 Day(s)");
+
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(8)) {
+				System.out.println("Logging you out");
+				stayLoggedIn = 0;
+			}
+		}
+	}
 }

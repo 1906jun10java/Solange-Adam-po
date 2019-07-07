@@ -1,0 +1,1 @@
+- 'to view your current owned vehicles and offers' - all offers from every user displays
