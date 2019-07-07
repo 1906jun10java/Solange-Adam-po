@@ -13,11 +13,11 @@ public class LocalUserData {
 	
 	//TODO Change this to get the database from the server, for now - non-persistent
 	public static void getUserDataBase() {
-		User masterControl = new User("MasterControl", "password", "Master", "Contorl", 1, 0);
-		User testCustomer = new User("customer", "password", "Test", "Customer", 0, 0);
+		User masterControl = new User("MasterControl", "password", "Master", "Contorl", 2);
+		User testCustomer = new User("customer", "password", "Test", "Customer", 1);
 		userDataBase.put("MasterControl", masterControl);
 		userDataBase.put("customer", testCustomer);
-//		System.out.println(userDataBase.values());
+		System.out.println(userDataBase.values());
 	}
 
 	public static void addNewUser() {

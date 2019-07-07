@@ -6,15 +6,16 @@ import com.revature.data.FirstStructure;
 import com.revature.data.LocalUserData;
 
 public class ProgramOperations {
-
-	ScannerFinder sf = ScannerFinder.getSFDouble();
-	Scanner sc = sf.runScanner();
+	
+	//TODO Replace limited scope Scanner with this Scanner
+	ScannerFinder scannerRomeo = ScannerFinder.getScannerInstance();
+	Scanner scannerActual = scannerRomeo.runScanner();
 
 	public static void startProgram() {
 		System.out.println("--------------------------------" + "\nStarting Best Dealership Interface"
 				+ "\n--------------------------------\n");
 		// TODO add sleep function
-		vehicleAdder(3);
+		vehicleAdder(16);
 		LocalUserData.getUserDataBase();
 //		FirstStructure.lotInventoryPrint();
 		// TODO add user database generator (for testing reasons)
