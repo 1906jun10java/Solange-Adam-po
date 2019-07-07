@@ -3,22 +3,22 @@ package com.revature.service;
 import java.util.Scanner;
 
 public class ScannerFinder {
-	static ScannerFinder sf = null;
-	private static Scanner sc = new Scanner(System.in);
+	static ScannerFinder scannerRomeo = null;
+	private static Scanner scannerActual = new Scanner(System.in);
 	
 	private ScannerFinder() {
 		super();
 	}
-	public static ScannerFinder getSFDouble() {
+	public static ScannerFinder getScannerInstance() {
 		//TODO Find out how to use scanner here
-		if(sf == null) {
-			sf = new ScannerFinder();
+		if(scannerRomeo == null) {
+			scannerRomeo = new ScannerFinder();
 		}
-		return sf;
+		return scannerRomeo;
 	}
 	
 	public Scanner runScanner() {
-		return sc;
+		return scannerActual;
 	}
 	
 

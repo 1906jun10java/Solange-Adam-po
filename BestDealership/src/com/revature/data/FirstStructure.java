@@ -1,6 +1,6 @@
 package com.revature.data;
 
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -10,15 +10,16 @@ public class FirstStructure {
 
 	// TODO create a data structure to hold users
 	// TODO create a data structure to hold offers
-	static HashMap<Integer, Car> lotInventory = new HashMap<>();
-
+	public static HashMap<Integer, Car> lotInventory = new HashMap<>();
+	public static ArrayList<Integer> usedSKU = new ArrayList<Integer>();
 
 	public static void buildTestLot() {
 		Random randInt = new Random();
 		int skuDecider = randInt.nextInt((600000 - 100000) + 1) + 100000;
-		if (lotInventory.containsKey(skuDecider)) {
+		if (usedSKU.contains(skuDecider)) {
 			buildTestLot();
 		} else {
+			usedSKU.add(skuDecider);
 			lotInventory.put(skuDecider, carBuilder(skuDecider));
 		}
 	}
@@ -119,7 +120,7 @@ public class FirstStructure {
 				break;
 			}
 			break;
-		}		
+		}
 		return nextModel;
 	}
 
@@ -140,9 +141,31 @@ public class FirstStructure {
 		}
 		return nextMake;
 	}
-	
+
 	public static void lotInventoryPrint() {
-		System.out.println(lotInventory.values());
+		System.out.println(lotInventory);
 	}
 
+	public static int carViewer(int skuIndex, int carsRemaining) {
+		int menuNumber = 1;
+		if (carsRemaining > 5) {
+			int menuLimit = skuIndex + 5;
+			while (skuIndex < menuLimit) {
+				System.out.println((menuNumber) + ":  " + lotInventory.get(usedSKU.get(skuIndex)));
+				menuNumber = menuNumber + 1;
+				skuIndex = skuIndex + 1;
+			}
+		} else if (carsRemaining == 0) {
+			System.out.println("All cars searched, returning to Main Menu");
+		} else {
+			int menuLimit = skuIndex + carsRemaining;
+			while (skuIndex < menuLimit) {
+
+				System.out.println((menuNumber) + ":  " + lotInventory.get(usedSKU.get(skuIndex)));
+				menuNumber = menuNumber + 1;
+				skuIndex = skuIndex + 1;
+			}
+		}
+		return skuIndex;
+	}
 }
