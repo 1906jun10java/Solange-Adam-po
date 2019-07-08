@@ -20,7 +20,7 @@ public class ProgramOperations {
 	static CustomExceptions e = new CustomExceptions(
 			"WARN:  Invalid password entry for new " + "employee account creation");
 
-	public static void startProgram() {
+	public static boolean startProgram() {
 		System.out.println("--------------------------------" + "\nStarting Best Dealership Interface"
 				+ "\n--------------------------------\n");
 		try {
@@ -38,6 +38,7 @@ public class ProgramOperations {
 		LocalUserData.getUserDataBase();
 //		FirstStructure.lotInventoryPrint();
 		// TODO add user database generator (for testing reasons)
+		return true;
 	}
 
 	public static void endProgram() {

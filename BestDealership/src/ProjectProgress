@@ -17,7 +17,7 @@
 		
 6. Log4j is implemented to log events to a file.				1
 
-7. A minimum of one (1) JUnit test is written to 				0
+7. A minimum of one (1) JUnit test is written to 				1 *
 		test some functionality.
 -------------------------------------------------------------------------
 Features:
@@ -25,14 +25,14 @@ Features:
 * As an employee, I can add a car to the lot.					1
 * As a customer, I can view the cars on the lot.				1
 * As a customer, I can make an offer for a car.					1
-* As an employee, I can accept or reject a 						=
+* As an employee, I can accept or reject a 						0
 		pending offer for a car.
 * As the system, I update a car to an owned state 				0
 		when an offer is accepted.
 * As the system, I reject all other pending offers 				0
 		for a car when an offer is accepted.
 * As a user, I can register for a customer account. 			1
-* As an employee, I can remove a car from the lot.				=
+* As an employee, I can remove a car from the lot.				0 *
 * As a customer, I can view the cars that I own.				0
 * As a customer, I can view my remaining payments 				1
 		for a car.
