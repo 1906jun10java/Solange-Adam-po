@@ -29,7 +29,7 @@ public class ProgramOperations {
 			e.printStackTrace();
 		}
 		System.out.println("...");
-		vehicleAdder(16, 0);
+		vehicleAdder(4, 0);
 		try {
 			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
