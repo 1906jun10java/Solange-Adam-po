@@ -19,11 +19,11 @@ public class EmployeeOperations {
 		int offerMenuBreak = 0;
 		int pageNumber = 0 + pageMover;
 		System.out.println("-------------------------------------------------------------------");
-		System.out.println("Please select a vehicle you wish to place an offer on:");
+		System.out.println("Viewing Inventory");
 		System.out.println("Current number of cars in inventory is:  " + FirstStructure.lotInventory.size());
 		System.out.println("Page " + pageNumber);
 		System.out.println("-------------------------------------------------------------------");
-		System.out.println("Please select the number of the car you wish to place an offer on:  \n");
+		System.out.println("Please select the number of the car you wish to remove:  \n");
 
 		while (offerMenuBreak != 1) {
 			// TODO Fix this statement
@@ -35,8 +35,7 @@ public class EmployeeOperations {
 			offerMenuBreak = 1;
 		}
 	}
-	
-	
+		
 	public static int inventoryMenu(String carMenu, int currentIndex, int pageNumber) {
 		int menuChoice = 0;
 		String possibleEntry = ("1,2,3,4,5,6,7");
@@ -50,18 +49,15 @@ public class EmployeeOperations {
 			switch (carMenu) {
 			case "1":
 				System.out.println("Removing:  " + FirstStructure.usedSKU.get(currentIndex + 0));
-				System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
-//				OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 0), getOffer());
+				removeCarSelect(FirstStructure.usedSKU.get(currentIndex + 0));
 				menuChoice = 1;
 				break;
 			case "2":
 				try {
 					System.out.println("Removing:  " + FirstStructure.usedSKU.get(currentIndex + 1));
-					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
-//					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 1), getOffer());
+					removeCarSelect(FirstStructure.usedSKU.get(currentIndex + 1));
 				} catch (Exception e) {
-					System.out.println("Invaid selection, but congratulatios.  "
-							+ "This invalid excption only happens in super special situations");
+					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
 				}
 				menuChoice = 2;
@@ -69,33 +65,27 @@ public class EmployeeOperations {
 			case "3":
 				try {
 					System.out.println("Removing:  " + FirstStructure.usedSKU.get(currentIndex + 2));
-					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
-//					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 2), getOffer());
+					removeCarSelect(FirstStructure.usedSKU.get(currentIndex + 2));
 				} catch (Exception e) {
-					System.out.println("Invaid selection, but congratulatios.  "
-							+ "This invalid excption only happens in super special situations");
+					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
 				}
 				break;
 			case "4":
 				try {
 					System.out.println("Removing:  " + FirstStructure.usedSKU.get(currentIndex + 3));
-					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
-//					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 3), getOffer());
+					removeCarSelect(FirstStructure.usedSKU.get(currentIndex + 3));
 				} catch (Exception e) {
-					System.out.println("Invaid selection, but congratulatios.  "
-							+ "This invalid excption only happens in super special situations");
+					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
 				}
 				break;
 			case "5":
 				try {
 					System.out.println("Removing:  " + FirstStructure.usedSKU.get(currentIndex + 4));
-					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
-//					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 4), getOffer());
+					removeCarSelect(FirstStructure.usedSKU.get(currentIndex + 4));
 				} catch (Exception e) {
-					System.out.println("Invaid selection, but congratulatios.  "
-							+ "This invalid excption only happens in super special situations");
+					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
 				}
 				break;
@@ -114,4 +104,16 @@ public class EmployeeOperations {
 		return menuChoice;
 	}
 
+	public static boolean removeCarSelect(Integer sku) {
+		System.out.println("Are you sure you wish to remove car:  "+ FirstStructure.lotInventory.get(sku) + "?"
+				+ "\n Enter \"1\" to comfirm removal from the lot.  WARNING - This action is final"
+				+ "\n Enter \"2\" to cancel removal.");
+		String offerAmountInput = scannerActual.next();
+		//USING .equals MAKES IT WAY BETTER THEN THE COMPLICATED STRING VERSION
+		if (offerAmountInput.equals("1")) {
+			FirstStructure.removeCar(sku);
+			return true;
+		}
+		return false;
+	}
 }
