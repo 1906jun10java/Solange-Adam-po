@@ -65,7 +65,9 @@ public class UserMenu {
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(2)) {
 				System.out.println("Viewing your cars");
 				OffersData.showMyOffers(currentUser);
-				// view owned cars and offers
+				//TODO Change this to OwnedData
+				OffersData.showMyCars(currentUser);
+
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
 				System.out.println("Logging you out");
 				stayLoggedIn = 0;
@@ -105,7 +107,7 @@ public class UserMenu {
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
 				// TODO See offers and review
-				OffersData.showOffers();
+				EmployeeOperations.findCurrentOffers(0, 1);
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(6)) {
 				// TODO See Payments

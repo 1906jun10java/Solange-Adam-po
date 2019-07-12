@@ -174,7 +174,9 @@ public class FirstStructure {
 	}
 	
 	public static void removeCar(Integer sku) {
-		System.out.println("Removing car:  " + lotInventory.get(sku));
+		//TODO add reject offer function
+		
+//		System.out.println("Removing car:  " + lotInventory.get(sku));
 		lotInventory.remove(sku);
 		System.out.println(usedSKU);
 		usedSKU.remove(sku);

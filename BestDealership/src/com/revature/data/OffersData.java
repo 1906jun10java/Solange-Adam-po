@@ -12,7 +12,7 @@ import com.revature.service.UserMenu;
 public class OffersData {
 	public static Logger log = Logger.getRootLogger();
 	// All offers by customer
-	public static HashMap<String, Offer> customerOffers = new HashMap<>();
+	public static HashMap<Integer, Offer> customerOffers = new HashMap<>();
 	// All offer objects
 	public static ArrayList<Integer> offersByCustomer = new ArrayList<>();
 	// ArrayList for indexing and unique ID creation
@@ -39,10 +39,10 @@ public class OffersData {
 		Offer offer = new Offer(offerNumber, customer, sku, price, offerAmount);
 		System.out.println("Your offer has been made:\n" + offer);
 		offersByCustomer.add(offerNumber);
-		customerOffers.put(customer, offer);
+		customerOffers.put(offerNumber, offer);
 		return true;
 	}
-
+	//Currently un-used and only for testing
 	public static boolean showOffers() {
 		try {
 			//TODO Build a similar menu to the inventory screen
@@ -55,29 +55,61 @@ public class OffersData {
 		}
 	}
 
-	public static boolean showMyOffers(User currentUser) {
-		if (customerOffers.get(currentUser.getUserName()) == null) {
-			System.out.println("You currently do not have any offers pending");
-		} else {
-			try {
-				//TODO iterate through map for if(offer.getCustomer.equals(currentUser.getUserName))
-				System.out.println("\n " + customerOffers.get(currentUser.getUserName()) + "\n ");
-			} catch (Exception e) {
-				System.out.println("\nThere are curently no offers.  \n");
-				log.info(e);
-				return false;
+	public static void showMyOffers(User currentUser) {
+		System.out.println("\nFinding your offers:\n");
+		for(int i = 0; i < offersByCustomer.size(); i++) {
+//			if(map value  == .equals(currentUser.getUserName()))
+			if(customerOffers.get(offersByCustomer.get(i)).getCustomer().equals(currentUser.getUserName())) {
+				System.out.println(customerOffers.get(offersByCustomer.get(i)));	
 			}
 		}
-		//TODO break this off into a stand-alone method
-		try {
-			System.out.println("Cars you own");
-		} catch (Exception e) {
-			System.out.println("\nYou currently do not own any cars");
-			log.info(e);
-			return false;
-		}
-		return true;
 	}
+	
+	//TODO Move this to an OwnedData
+	public static void showMyCars(User currentUser) {
+		System.out.println("\nFinding your offers:\n");
+		for(int i = 0; i < offersByCustomer.size(); i++) {
+//			if(map value  == .equals(currentUser.getUserName()))
+			if(customerOffers.get(offersByCustomer.get(i)).getCustomer().equals(currentUser.getUserName())) {
+				System.out.println(customerOffers.get(offersByCustomer.get(i)));	
+			}
+		}
+		//TODO this could return a list of cars that need a payment
+	}
+//		//TODO break this off into a stand-alone method
+//		try {
+//			System.out.println("Cars you own");
+//		} catch (Exception e) {
+//			System.out.println("\nYou currently do not own any cars");
+//			log.info(e);
+//			return false;
+//		}
+//		return true;
+//	}
+	public static int offersViewer(int skuIndex, int offersRemaining) {
+		int menuNumber = 1;
+		if (offersRemaining > 5) {
+			int menuLimit = skuIndex + 5;
+			while (skuIndex < menuLimit) {
+				System.out.println((menuNumber) + ":  " + customerOffers.get(offersByCustomer.get(skuIndex)));
+				menuNumber = menuNumber + 1;
+				skuIndex = skuIndex + 1;
+			}
+		} else if (offersRemaining == 0) {
+			System.out.println("All offers searched, returning to Main Menu");
+		} else {
+			int menuLimit = skuIndex + offersRemaining;
+			while (skuIndex < menuLimit) {
+				System.out.println((menuNumber) + ":  " + customerOffers.get(offersByCustomer.get(skuIndex)));
+				menuNumber = menuNumber + 1;
+				skuIndex = skuIndex + 1;
+			}
+		}
+		return skuIndex;
+	}
+
+
+
 }
 
 
