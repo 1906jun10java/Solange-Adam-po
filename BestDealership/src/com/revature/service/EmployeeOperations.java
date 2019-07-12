@@ -38,7 +38,7 @@ public class EmployeeOperations {
 			offerMenuBreak = 1;
 		}
 	}
-	//TODO Update this to the right Map and Array in OffersData
+	//TODO make SoldData Map and companion 
 	public static int currentOffersMenu(String carMenu, int currentIndex, int pageNumber) {
 		int menuChoice = 0;
 		String possibleEntry = ("1,2,3,4,5,6,7");
@@ -52,7 +52,7 @@ public class EmployeeOperations {
 			switch (carMenu) {
 			case "1":
 				System.out.println("Removing:  " + FirstStructure.usedSKU.get(currentIndex + 0));
-				removeCarSelect(FirstStructure.usedSKU.get(currentIndex + 0));
+				SoldData.acceptOffer((OffersData.offersByCustomer.get(currentIndex + 0)));
 				menuChoice = 1;
 				break;
 			case "2":

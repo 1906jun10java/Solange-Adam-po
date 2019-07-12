@@ -108,6 +108,9 @@ public class OffersData {
 		return skuIndex;
 	}
 
+	public static void removeOffer() {
+		//this is stuff for removing an offer
+	}
 
 
 }

@@ -9,6 +9,7 @@ public class Car {
 	private int miles = 0;
 	private int year = 9999;
 	private double price = 150000.00;
+	private String ownedBy ="lot";
 	
 	//constructors
 	public Car() {
@@ -24,6 +25,7 @@ public class Car {
 		this.model = model;
 		this.year = year;
 		this.price = price;
+		
 	}
 	
 	public double getPrice() {
