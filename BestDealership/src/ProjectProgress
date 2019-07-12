@@ -32,7 +32,7 @@ Features:
 * As the system, I reject all other pending offers 				0
 		for a car when an offer is accepted.
 * As a user, I can register for a customer account. 			1
-* As an employee, I can remove a car from the lot.				0 *
+* As an employee, I can remove a car from the lot.				1
 * As a customer, I can view the cars that I own.				0
 * As a customer, I can view my remaining payments 				1
 		for a car.

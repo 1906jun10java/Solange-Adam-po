@@ -172,4 +172,24 @@ public class FirstStructure {
 		}
 		return skuIndex;
 	}
+	
+	public static void removeCar(Integer sku) {
+		System.out.println("Removing car:  " + lotInventory.get(sku));
+		lotInventory.remove(sku);
+		System.out.println(usedSKU);
+		usedSKU.remove(sku);
+		System.out.println(usedSKU);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
