@@ -6,3 +6,5 @@
 2019-07-07 13:48:06 INFO  root:142 - com.revature.driver.CustomExceptions: WARN:  Invalid password entry for new employee account creation
 2019-07-10 09:24:53 INFO  root:122 - java.lang.NumberFormatException: For input string: "Eric"
 2019-07-10 10:34:30 INFO  root:62 - java.lang.IndexOutOfBoundsException: Index: 16, Size: 16
+2019-07-11 19:42:00 INFO  root:89 - java.lang.IndexOutOfBoundsException: Index: 4, Size: 4
+2019-07-11 19:44:25 INFO  root:89 - java.lang.IndexOutOfBoundsException: Index: 4, Size: 4

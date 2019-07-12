@@ -60,7 +60,7 @@ public class Offer {
 
 	@Override
 	public String toString() {
-		return ("\nYou made an offer of $" + offerMade + " for the: \n" 
+		return ("\nOffer made by " + customer + " of $" + offerMade + " for the: \n" 
 				+ FirstStructure.lotInventory.get(carSKU) + "\n ");
 		
 //		return "Offer [offerNumber=" + offerNumber + ", customer=" + customer + ", carSKU=" + carSKU + ", askingPrice="

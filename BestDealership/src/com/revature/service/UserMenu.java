@@ -8,7 +8,7 @@ import com.revature.data.*;
 
 public class UserMenu {
 	static Scanner userOps = new Scanner(System.in);
-	public static ArrayList<String> currentUserList = new ArrayList<>();
+	public static String currentUserName = "test";
 
 	public static void systemLogIn() {
 		int logInSwitch = 0;
@@ -28,8 +28,8 @@ public class UserMenu {
 						employeeMainMenu();
 						logInSwitch = 1;
 					} else if (currentUser.getAccessLevel() == 1) {
-						currentUserList.add(testUserName);
-						customerMainMenu();
+						currentUserName = testUserName;
+						customerMainMenu(currentUser);
 						logInSwitch = 1;
 					}
 				} else {
@@ -40,9 +40,10 @@ public class UserMenu {
 		}
 	}
 
-	private static void customerMainMenu() {
+	private static void customerMainMenu(User currentUser) {
 		System.out.println(
-				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn\n\n\n\n\n\n\n\n\n\n\n\n" + "--------Customer Menu--------");
+				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" 
+						+ "--------Customer Menu--------");
 		int stayLoggedIn = 1;
 		while (stayLoggedIn == 1) {
 			System.out.println("Please enter: \n\"1\" to view our current inventory and place an offer, "
@@ -59,11 +60,11 @@ public class UserMenu {
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(0)) {
 				// place offer menu
-				CustomerOffers.placeOffer(0, 1);
+				CustomerOffers.placeOffer(0, 1, currentUser);
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(2)) {
 				System.out.println("Viewing your cars");
-				OffersData.showOffers();
+				OffersData.showMyOffers(currentUser);
 				// view owned cars and offers
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
 				System.out.println("Logging you out");
@@ -75,7 +76,8 @@ public class UserMenu {
 
 	private static void employeeMainMenu() {
 		System.out.println(
-				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + "--------Employee Menu--------");
+				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" 
+						+ "--------Employee Menu--------");
 		int stayLoggedIn = 1;
 		while (stayLoggedIn == 1) {
 			System.out.println("Please enter: \n\"1\" to add a vehicle to the lot "

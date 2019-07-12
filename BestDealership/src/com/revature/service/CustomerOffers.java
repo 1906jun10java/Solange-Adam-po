@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
+import com.revature.beans.User;
 import com.revature.data.FirstStructure;
 import com.revature.data.OffersData;
 
@@ -12,7 +13,7 @@ public interface CustomerOffers {
 	Scanner scannerActual = scannerRomeo.runScanner();
 	public static Logger log = Logger.getRootLogger();
 
-	public static void placeOffer(int indexMover, int pageMover) // first call of this needs to be 0, 1
+	public static void placeOffer(int indexMover, int pageMover, User currentUser) // first call of this needs to be 0, 1
 	{
 		int currentIndex = 0 + indexMover;
 		int indexLimit = 5 + indexMover;
@@ -31,12 +32,12 @@ public interface CustomerOffers {
 			System.out.println("6:  For The Next Page\n");
 			System.out.println("7:  To Exit");
 			String carMenu = scannerActual.next();
-			offerMenu(carMenu, currentIndex, pageNumber);
+			offerMenu(carMenu, currentIndex, pageNumber, currentUser);
 			offerMenuBreak = 1;
 		}
 	}
 
-	public static int offerMenu(String carMenu, int currentIndex, int pageNumber) {
+	public static int offerMenu(String carMenu, int currentIndex, int pageNumber, User currentUser) {
 		int menuChoice = 0;
 		String possibleEntry = ("1,2,3,4,5,6,7");
 		if (carMenu.length() > 1 || carMenu.charAt(0) != possibleEntry.charAt(0)
@@ -44,18 +45,18 @@ public interface CustomerOffers {
 				& carMenu.charAt(0) != possibleEntry.charAt(6) & carMenu.charAt(0) != possibleEntry.charAt(8)
 				& carMenu.charAt(0) != possibleEntry.charAt(10) & carMenu.charAt(0) != possibleEntry.charAt(12)) {
 			System.out.println("Please enter 1 - 7");
-			offerMenu(scannerActual.next(), currentIndex, pageNumber);
+			offerMenu(scannerActual.next(), currentIndex, pageNumber, currentUser);
 		} else {
 			switch (carMenu) {
 			case "1":
 				System.out.println("Creating Offer for:  " + FirstStructure.usedSKU.get(currentIndex + 0));
-				OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 0), getOffer());
+				OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 0), getOffer(currentUser), currentUser);
 				menuChoice = 1;
 				break;
 			case "2":
 				try {
 					System.out.println("Creating Offer for:  " + FirstStructure.usedSKU.get(currentIndex + 1));
-					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 1), getOffer());
+					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 1), getOffer(currentUser), currentUser);
 				} catch (Exception e) {
 					System.out.println("Invaid selection, but congratulatios.  "
 							+ "This invalid excption only happens in super special situations");
@@ -66,7 +67,7 @@ public interface CustomerOffers {
 			case "3":
 				try {
 					System.out.println("Creating Offer for:  " + FirstStructure.usedSKU.get(currentIndex + 2));
-					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 2), getOffer());
+					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 2), getOffer(currentUser), currentUser);
 				} catch (Exception e) {
 					System.out.println("Invaid selection, but congratulatios.  "
 							+ "This invalid excption only happens in super special situations");
@@ -76,7 +77,7 @@ public interface CustomerOffers {
 			case "4":
 				try {
 					System.out.println("Creating Offer for:  " + FirstStructure.usedSKU.get(currentIndex + 3));
-					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 3), getOffer());
+					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 3), getOffer(currentUser), currentUser);
 				} catch (Exception e) {
 					System.out.println("Invaid selection, but congratulatios.  "
 							+ "This invalid excption only happens in super special situations");
@@ -86,7 +87,7 @@ public interface CustomerOffers {
 			case "5":
 				try {
 					System.out.println("Creating Offer for:  " + FirstStructure.usedSKU.get(currentIndex + 4));
-					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 4), getOffer());
+					OffersData.createOffer(FirstStructure.usedSKU.get(currentIndex + 4), getOffer(currentUser), currentUser);
 				} catch (Exception e) {
 					System.out.println("Invaid selection, but congratulatios.  "
 							+ "This invalid excption only happens in super special situations");
@@ -96,7 +97,7 @@ public interface CustomerOffers {
 			case "6":
 				int indexMover = currentIndex + 5;
 				int pageMover = pageNumber + 1;
-				placeOffer(indexMover, pageMover);
+				placeOffer(indexMover, pageMover, currentUser);
 				menuChoice = 6;
 				break;
 			case "7":
@@ -108,7 +109,7 @@ public interface CustomerOffers {
 		return menuChoice;
 	}
 
-	public static double getOffer() {
+	public static double getOffer(User currentUser) {
 		System.out.println("Please enter your offer or \"1\" to exit");
 		double offerAmount = 0.0;
 		String offerAmountInput = scannerActual.next();
@@ -120,7 +121,7 @@ public interface CustomerOffers {
 				offerAmount = Double.parseDouble(offerAmountInput);
 			} catch (Exception e) {
 				log.info(e);
-				getOffer();
+				getOffer(currentUser);
 			}
 		}
 
