@@ -173,9 +173,17 @@ public class FirstStructure {
 		return skuIndex;
 	}
 	
-	public static void removeCar(Integer sku) {
+	public static void removeCar(int sku) {
 		//TODO add reject offer function
-		
+		for(int i = 0; i < OffersData.offersByCustomer.size(); i++) {
+			if((OffersData.customerOffers.get(OffersData.offersByCustomer.get(i)).getCarSKU()) == (sku)) {
+				System.out.println("Removing " + (OffersData.customerOffers.get(OffersData.offersByCustomer.get(i)).getCarSKU() + " from customerOffers"));
+				OffersData.customerOffers.remove(OffersData.offersByCustomer.get(i));
+				System.out.println("Removing " + OffersData.offersByCustomer.get(i) + " from offersByCustomer");
+				OffersData.offersByCustomer.remove(i);
+				i--;
+			}
+		}
 //		System.out.println("Removing car:  " + lotInventory.get(sku));
 		lotInventory.remove(sku);
 		System.out.println(usedSKU);

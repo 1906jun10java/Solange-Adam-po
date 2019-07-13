@@ -74,18 +74,8 @@ public class OffersData {
 				System.out.println(customerOffers.get(offersByCustomer.get(i)));	
 			}
 		}
-		//TODO this could return a list of cars that need a payment
 	}
-//		//TODO break this off into a stand-alone method
-//		try {
-//			System.out.println("Cars you own");
-//		} catch (Exception e) {
-//			System.out.println("\nYou currently do not own any cars");
-//			log.info(e);
-//			return false;
-//		}
-//		return true;
-//	}
+
 	public static int offersViewer(int skuIndex, int offersRemaining) {
 		int menuNumber = 1;
 		if (offersRemaining > 5) {

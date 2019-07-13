@@ -47,14 +47,17 @@ public class UserMenu {
 		int stayLoggedIn = 1;
 		while (stayLoggedIn == 1) {
 			System.out.println("Please enter: \n\"1\" to view our current inventory and place an offer, "
-					+ "\n\"2\" to view your current owned vehicles and offers" + "\n\"3\" to exit\n--------\n ");
+					+ "\n\"2\" to view your current offers" 
+					+ "\n\"3\" to view your current loans and make payments" 
+					+ "\n\"4\" to exit\n--------\n ");
 			// TODO Remove problem solve
 //			String logInMenuInput = "2";
 			String logInMenuInput = ZzFirstTryAtScannerSingleton.generalStringInput();
-			String possibleEntry = "1,2,3";
+			String possibleEntry = "1,2,3,4";
 			if (logInMenuInput.length() < 2 & logInMenuInput.charAt(0) != possibleEntry.charAt(0)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(2)
-					& logInMenuInput.charAt(0) != possibleEntry.charAt(4)) {
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(4)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(6)) {
 				System.out.println("Invalid entry ...\n");
 				// TODO put in a one second sleep here
 
@@ -65,14 +68,16 @@ public class UserMenu {
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(2)) {
 				System.out.println("Viewing your cars");
 				OffersData.showMyOffers(currentUser);
-				//TODO Change this to OwnedData
-				OffersData.showMyCars(currentUser);
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
+				System.out.println("Viewing Loans");
+				CustomerOffers.findMyLoans(0, 1, currentUser);
+
+			}	else if (logInMenuInput.charAt(0) == possibleEntry.charAt(6)) {
 				System.out.println("Logging you out");
 				stayLoggedIn = 0;
-				// exit the menus and program
 			}
+			
 		}
 	}
 
@@ -111,6 +116,7 @@ public class UserMenu {
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(6)) {
 				// TODO See Payments
+				EmployeeOperations.findCurrentSoldCars(0, 1, currentUser);
 				System.out.println("Currently unavailable, please contact your system administrator.  \n"  
 					+ "Current wait time is: 999 Day(s)");
 

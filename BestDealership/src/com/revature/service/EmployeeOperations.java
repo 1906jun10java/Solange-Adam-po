@@ -49,20 +49,18 @@ public class EmployeeOperations {
 				& carMenu.charAt(0) != possibleEntry.charAt(6) & carMenu.charAt(0) != possibleEntry.charAt(8)
 				& carMenu.charAt(0) != possibleEntry.charAt(10) & carMenu.charAt(0) != possibleEntry.charAt(12)) {
 			System.out.println("Please enter 1 - 7");
-			inventoryMenu(scannerActual.next(), currentIndex, pageNumber);
+			currentOffersMenu(scannerActual.next(), currentIndex, pageNumber, currentUser);
 		} else {
 			switch (carMenu) {
 			case "1":
 				System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 0)));
-				SoldData.loanOperations(SoldData.loanBuilder(
-						currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 0))));
+				SoldData.sellCar(currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 0)));
 				menuChoice = 1;
 				break;
 			case "2":
 				try {
 					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 1)));
-					SoldData.loanOperations(SoldData.loanBuilder(
-							currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 1))));
+					SoldData.sellCar(currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 1)));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
@@ -72,8 +70,7 @@ public class EmployeeOperations {
 			case "3":
 				try {
 					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 2)));
-					SoldData.loanOperations(SoldData.loanBuilder(
-							currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 2))));
+					SoldData.sellCar(currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 2)));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
@@ -82,8 +79,7 @@ public class EmployeeOperations {
 			case "4":
 				try {
 					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 3)));
-					SoldData.loanOperations(SoldData.loanBuilder(
-							currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 3))));
+					SoldData.sellCar(currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 3)));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
@@ -92,8 +88,7 @@ public class EmployeeOperations {
 			case "5":
 				try {
 					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 4)));
-					SoldData.loanOperations(SoldData.loanBuilder(
-							currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 4))));
+					SoldData.sellCar(currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 4)));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
@@ -203,6 +198,100 @@ public class EmployeeOperations {
 					removeCarSelect(FirstStructure.usedSKU.get(currentIndex + 4));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
+					log.info(e);
+				}
+				break;
+			case "6":
+				int indexMover = currentIndex + 5;
+				int pageMover = pageNumber + 1;
+				findInventory(indexMover, pageMover);
+				menuChoice = 6;
+				break;
+			case "7":
+				menuChoice = 7;
+				break;
+			}
+
+		}
+		return menuChoice;
+	}
+	
+	//!!!!!!!vvvvvvv Viewing Sold Cars and Payments vvvvvvv!!!!!!!
+	
+	public static void findCurrentSoldCars(int indexMover, int pageMover, User currentUser) {
+		int currentIndex = 0 + indexMover;
+		int indexLimit = 5 + indexMover;
+		int offerMenuBreak = 0;
+		int pageNumber = 0 + pageMover;
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("Viewing Sold Cars");
+		System.out.println("Current number of cars sold:  " + SoldData.soldCarsIndex.size());
+		System.out.println("Page " + pageNumber);
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println(" \n");
+
+		while (offerMenuBreak != 1) {
+			// TODO Fix this statement
+			SoldData.loanViewer(currentIndex, SoldData.soldCarsIndex.size() - (currentIndex));
+			System.out.println("6:  For The Next Page\n");
+			System.out.println("7:  To Exit");
+			String carMenu = scannerActual.next();
+			currentSoldCars(carMenu, currentIndex, pageNumber, currentUser);
+			offerMenuBreak = 1;
+		}
+	}
+	
+	
+	public static int currentSoldCars(String carMenu, int currentIndex, int pageNumber, User currentUser) {
+		int menuChoice = 0;
+		String possibleEntry = ("1,2,3,4,5,6,7");
+		if (carMenu.length() > 1 || carMenu.charAt(0) != possibleEntry.charAt(0)
+				& carMenu.charAt(0) != possibleEntry.charAt(2) & carMenu.charAt(0) != possibleEntry.charAt(4)
+				& carMenu.charAt(0) != possibleEntry.charAt(6) & carMenu.charAt(0) != possibleEntry.charAt(8)
+				& carMenu.charAt(0) != possibleEntry.charAt(10) & carMenu.charAt(0) != possibleEntry.charAt(12)) {
+			System.out.println("Please enter 1 - 7");
+			currentSoldCars(scannerActual.next(), currentIndex, pageNumber, currentUser);
+		} else {
+			switch (carMenu) {
+			case "1":
+				System.out.println(SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 0)));
+
+				menuChoice = 1;
+				break;
+			case "2":
+				try {
+					System.out.println(SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 0)));
+
+				} catch (Exception e) {
+					System.out.println("Unable to view - ask your co-worker why to decrease productivity");
+					log.info(e);
+				}
+				menuChoice = 2;
+				break;
+			case "3":
+				try {
+					System.out.println(SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 0)));
+
+				} catch (Exception e) {
+					System.out.println("Unable to view - ask your co-worker why to decrease productivity");
+					log.info(e);
+				}
+				break;
+			case "4":
+				try {
+					System.out.println(SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 0)));
+
+				} catch (Exception e) {
+					System.out.println("Unable to view - ask your co-worker why to decrease productivity");
+					log.info(e);
+				}
+				break;
+			case "5":
+				try {
+					System.out.println(SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 0)));
+
+				} catch (Exception e) {
+					System.out.println("Unable to view - ask your co-worker why to decrease productivity");
 					log.info(e);
 				}
 				break;

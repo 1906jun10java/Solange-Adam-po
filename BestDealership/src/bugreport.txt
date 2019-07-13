@@ -1,1 +1,1 @@
-- 'to view your current owned vehicles and offers' - all offers from every user displays
+- When removing a car from the list, viewing inventory will present a null value

@@ -8,3 +8,7 @@
 2019-07-10 10:34:30 INFO  root:62 - java.lang.IndexOutOfBoundsException: Index: 16, Size: 16
 2019-07-11 19:42:00 INFO  root:89 - java.lang.IndexOutOfBoundsException: Index: 4, Size: 4
 2019-07-11 19:44:25 INFO  root:89 - java.lang.IndexOutOfBoundsException: Index: 4, Size: 4
+2019-07-13 11:07:11 INFO  root:76 - java.lang.IndexOutOfBoundsException: Index: 317491, Size: 3
+2019-07-13 11:09:15 INFO  root:76 - java.lang.NullPointerException
+2019-07-13 11:09:24 INFO  root:66 - java.lang.NullPointerException
+2019-07-13 11:14:04 INFO  root:76 - java.lang.IndexOutOfBoundsException: Index: 184898, Size: 4

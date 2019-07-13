@@ -1,12 +1,16 @@
 package com.revature.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
+import com.revature.beans.Loan;
 import com.revature.beans.User;
 import com.revature.data.FirstStructure;
 import com.revature.data.OffersData;
+import com.revature.data.SoldData;
 
 public interface CustomerOffers {
 	ScannerFinder scannerRomeo = ScannerFinder.getScannerInstance();
@@ -127,6 +131,113 @@ public interface CustomerOffers {
 
 		return offerAmount;
 	}
+	
+	// vvvvvv View Loans and Make Payments vvvvvv	
+	
+	public static void findMyLoans(int indexMover, int pageMover, User currentUser) {
+		int currentIndex = 0 + indexMover;
+		int indexLimit = 5 + indexMover;
+		int offerMenuBreak = 0;
+		int pageNumber = 0 + pageMover;
+		//building user data
+		HashMap<Integer, Loan> myLoans = new HashMap<>();
+		ArrayList<Integer> myLoansIndex = new ArrayList<>();
+		for (int j = 0; j < SoldData.soldCarsIndex.size(); j++) {
+			if(currentUser.getUserName().equals(SoldData.soldCars.get(SoldData.soldCarsIndex.get(j)).getOwner())) {
+			myLoansIndex.add(SoldData.soldCarsIndex.get(j));
+			myLoans.put(SoldData.soldCarsIndex.get(j), SoldData.soldCars.get(SoldData.soldCarsIndex.get(j)));
+			}
+		}
+		
+		
+		
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("Viewing Sold Cars");
+		System.out.println("Current number of loans:  " + myLoansIndex.size());
+		System.out.println("Page " + pageNumber);
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println(" \n");
+
+		while (offerMenuBreak != 1) {
+			// TODO Fix this statement
+			SoldData.loanViewer(currentIndex, myLoansIndex.size() - (currentIndex));
+			System.out.println("6:  For The Next Page\n");
+			System.out.println("7:  To Exit");
+			String carMenu = scannerActual.next();
+			myLoans(carMenu, currentIndex, pageNumber, currentUser, myLoans, myLoansIndex);
+			offerMenuBreak = 1;
+		}
+	}
+	
+	
+	public static int myLoans(String carMenu, int currentIndex, int pageNumber, User currentUser, HashMap<Integer, Loan> myLoans, ArrayList<Integer> myLoansIndex) {
+		int menuChoice = 0;
+		String possibleEntry = ("1,2,3,4,5,6,7");
+		if (carMenu.length() > 1 || carMenu.charAt(0) != possibleEntry.charAt(0)
+				& carMenu.charAt(0) != possibleEntry.charAt(2) & carMenu.charAt(0) != possibleEntry.charAt(4)
+				& carMenu.charAt(0) != possibleEntry.charAt(6) & carMenu.charAt(0) != possibleEntry.charAt(8)
+				& carMenu.charAt(0) != possibleEntry.charAt(10) & carMenu.charAt(0) != possibleEntry.charAt(12)) {
+			System.out.println("Please enter 1 - 7");
+			myLoans(scannerActual.next(), currentIndex, pageNumber, currentUser, myLoans, myLoansIndex);
+		} else {
+			switch (carMenu) {
+			case "1":
+				System.out.println("Accepting:  " + myLoans.get(myLoansIndex.get(currentIndex + 0)));
+				SoldData.makePayment(currentUser, myLoans.get(myLoansIndex.get(currentIndex + 0)));
+				menuChoice = 1;
+				break;
+			case "2":
+				try {
+					System.out.println("Accepting:  " + SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 1)));
+					SoldData.makePayment(currentUser, SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 1)));
+				} catch (Exception e) {
+					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
+					log.info(e);
+				}
+				menuChoice = 2;
+				break;
+			case "3":
+				try {
+					System.out.println("Accepting:  " + SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 2)));
+					SoldData.makePayment(currentUser, SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 2)));
+				} catch (Exception e) {
+					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
+					log.info(e);
+				}
+				break;
+			case "4":
+				try {
+					System.out.println("Accepting:  " + SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 3)));
+					SoldData.makePayment(currentUser, SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 3)));
+				} catch (Exception e) {
+					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
+					log.info(e);
+				}
+				break;
+			case "5":
+				try {
+					System.out.println("Accepting:  " + SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 4)));
+					SoldData.makePayment(currentUser, SoldData.soldCars.get(SoldData.soldCarsIndex.get(currentIndex + 4)));
+				} catch (Exception e) {
+					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
+					log.info(e);
+				}
+				break;
+			case "6":
+				int indexMover = currentIndex + 5;
+				int pageMover = pageNumber + 1;
+				findMyLoans(indexMover, pageMover, currentUser);
+				menuChoice = 6;
+				break;
+			case "7":
+				menuChoice = 7;
+				break;
+			}
+
+		}
+		return menuChoice;
+	}
+	
 	
 }
 

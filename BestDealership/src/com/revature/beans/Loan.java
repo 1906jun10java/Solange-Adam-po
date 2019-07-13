@@ -1,6 +1,7 @@
 package com.revature.beans;
 
 public class Loan {
+	private int loanNumber = 9999;
 	private String signOffEmployee = "approvalEmployee";
 	private int sku = 100000;
 	private String owner = "CustomerUserName";
@@ -14,7 +15,7 @@ public class Loan {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Loan(String signOffEmployee, int sku, String owner, double balance, double payment, double loanTerm,
+	public Loan(int loanNubmer, String signOffEmployee, int sku, String owner, double balance, double payment, double loanTerm,
 			int paymentsMade) {
 		super();
 		this.signOffEmployee = signOffEmployee;
@@ -24,6 +25,14 @@ public class Loan {
 		this.payment = payment;
 		this.loanTerm = loanTerm;
 		this.paymentsMade = paymentsMade;
+	}
+
+	public int getLoanNumber() {
+		return loanNumber;
+	}
+
+	public void setLoanNumber(int loanNumber) {
+		this.loanNumber = loanNumber;
 	}
 
 	public String getSignOffEmployee() {
@@ -84,13 +93,17 @@ public class Loan {
 
 	@Override
 //	public String toString() {
-//		return "this is a lone loan";
+//		return "Loan [loanNumber=" + loanNumber + ", signOffEmployee=" + signOffEmployee + ", sku=" + sku + ", owner="
+//				+ owner + ", balance=" + balance + ", payment=" + payment + ", loanTerm=" + loanTerm + ", paymentsMade="
+//				+ paymentsMade + "]";
 //	}
-	
+
 	public String toString() {
-		return "Loan [signOffEmployee=" + signOffEmployee + ", sku=" + sku + ", owner=" + owner + ", balance=" + balance
-				+ ", payment=" + payment + ", loanTerm=" + loanTerm + ", paymentsMade=" + paymentsMade + "]";
+		return "Loan: " + loanNumber + " | For Car: " + sku + " has a balance of: $" + balance + " and $" + payment + " monthly payment."
+				+ "\n---Number of payments made is: " + paymentsMade + " of " + loanTerm;
 	}
+
+
 	
 	
 }
