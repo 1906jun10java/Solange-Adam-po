@@ -82,6 +82,8 @@ public class SoldData {
 		loan.setBalance(loan.getBalance() - loan.getPayment());
 		loan.setPaymentsMade(loan.getPaymentsMade() + 1);
 		System.out.println("\n\nCurrent loan information:" + loan);
+		log.info("Payment made for loan: " + loan + " "
+				+ "\n        by customer:" + currentUser);
 		return true;
 	}
 	

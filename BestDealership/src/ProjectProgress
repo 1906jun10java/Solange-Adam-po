@@ -25,16 +25,16 @@ Features:
 * As an employee, I can add a car to the lot.					1
 * As a customer, I can view the cars on the lot.				1
 * As a customer, I can make an offer for a car.					1
-* As an employee, I can accept or reject a 						0
+* As an employee, I can accept or reject a 						1
 		pending offer for a car.
-* As the system, I update a car to an owned state 				0
+* As the system, I update a car to an owned state 				1
 		when an offer is accepted.
-* As the system, I reject all other pending offers 				0
+* As the system, I reject all other pending offers 				1
 		for a car when an offer is accepted.
 * As a user, I can register for a customer account. 			1
 * As an employee, I can remove a car from the lot.				1
-* As a customer, I can view the cars that I own.				0
+* As a customer, I can view the cars that I own.				1
 * As a customer, I can view my remaining payments 				1
 		for a car.
-* As an employee, I can view all payments.						0
+* As an employee, I can view all payments.						1
 * As the system, I can calculate the monthly payment.			1

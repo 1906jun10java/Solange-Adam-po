@@ -12,3 +12,11 @@
 2019-07-13 11:09:15 INFO  root:76 - java.lang.NullPointerException
 2019-07-13 11:09:24 INFO  root:66 - java.lang.NullPointerException
 2019-07-13 11:14:04 INFO  root:76 - java.lang.IndexOutOfBoundsException: Index: 184898, Size: 4
+2019-07-13 11:46:02 INFO  root:85 - Payment made for loan: Loan: 79971 | For Car: 109647 has a balance of: $78526.67823557873 and $1473.3217644212775 monthly payment.
+---Number of payments made is: 1 of 60.0 
+        by customer:User [userName=aa, password=aa, firstName=aa, lastName=aa, accessLevel=1]
+
+2019-07-13 11:46:13 INFO  root:85 - Payment made for loan: Loan: 79971 | For Car: 109647 has a balance of: $77053.35647115746 and $1473.3217644212775 monthly payment.
+---Number of payments made is: 2 of 60.0 
+        by customer:User [userName=aa, password=aa, firstName=aa, lastName=aa, accessLevel=1]
+

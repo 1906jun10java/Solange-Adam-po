@@ -1,1 +1,1 @@
-- When removing a car from the list, viewing inventory will present a null value
+

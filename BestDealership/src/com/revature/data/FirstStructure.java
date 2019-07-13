@@ -185,10 +185,15 @@ public class FirstStructure {
 			}
 		}
 //		System.out.println("Removing car:  " + lotInventory.get(sku));
+		System.out.println(lotInventory);
 		lotInventory.remove(sku);
+		System.out.println(lotInventory);
 		System.out.println(usedSKU);
-		usedSKU.remove(sku);
+		int j = usedSKU.indexOf(sku);
+		usedSKU.remove(j);
 		System.out.println(usedSKU);
+		//TODO update Database
+		//TODO update Local
 	}
 }
 
