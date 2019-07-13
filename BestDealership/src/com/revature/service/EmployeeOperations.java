@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
+import com.revature.beans.User;
 import com.revature.data.FirstStructure;
 import com.revature.data.OffersData;
+import com.revature.data.SoldData;
 
 
 public class EmployeeOperations {
@@ -16,7 +18,7 @@ public class EmployeeOperations {
 	
 	// vvvvvv View and accept offers vvvvvv
 	// first call of this needs to be 0, 1
-	public static void findCurrentOffers(int indexMover, int pageMover) {
+	public static void findCurrentOffers(int indexMover, int pageMover, User currentUser) {
 		int currentIndex = 0 + indexMover;
 		int indexLimit = 5 + indexMover;
 		int offerMenuBreak = 0;
@@ -34,12 +36,12 @@ public class EmployeeOperations {
 			System.out.println("6:  For The Next Page\n");
 			System.out.println("7:  To Exit");
 			String carMenu = scannerActual.next();
-			currentOffersMenu(carMenu, currentIndex, pageNumber);
+			currentOffersMenu(carMenu, currentIndex, pageNumber, currentUser);
 			offerMenuBreak = 1;
 		}
 	}
 	//TODO make SoldData Map and companion 
-	public static int currentOffersMenu(String carMenu, int currentIndex, int pageNumber) {
+	public static int currentOffersMenu(String carMenu, int currentIndex, int pageNumber, User currentUser) {
 		int menuChoice = 0;
 		String possibleEntry = ("1,2,3,4,5,6,7");
 		if (carMenu.length() > 1 || carMenu.charAt(0) != possibleEntry.charAt(0)
@@ -51,14 +53,16 @@ public class EmployeeOperations {
 		} else {
 			switch (carMenu) {
 			case "1":
-				System.out.println("Removing:  " + FirstStructure.usedSKU.get(currentIndex + 0));
-				SoldData.acceptOffer((OffersData.offersByCustomer.get(currentIndex + 0)));
+				System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 0)));
+				SoldData.loanOperations(SoldData.loanBuilder(
+						currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 0))));
 				menuChoice = 1;
 				break;
 			case "2":
 				try {
-					System.out.println("Removing:  " + FirstStructure.usedSKU.get(currentIndex + 1));
-					removeCarSelect(FirstStructure.usedSKU.get(currentIndex + 1));
+					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 1)));
+					SoldData.loanOperations(SoldData.loanBuilder(
+							currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 1))));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
@@ -67,8 +71,9 @@ public class EmployeeOperations {
 				break;
 			case "3":
 				try {
-					System.out.println("Removing:  " + FirstStructure.usedSKU.get(currentIndex + 2));
-					removeCarSelect(FirstStructure.usedSKU.get(currentIndex + 2));
+					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 2)));
+					SoldData.loanOperations(SoldData.loanBuilder(
+							currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 2))));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
@@ -76,8 +81,9 @@ public class EmployeeOperations {
 				break;
 			case "4":
 				try {
-					System.out.println("Removing:  " + FirstStructure.usedSKU.get(currentIndex + 3));
-					removeCarSelect(FirstStructure.usedSKU.get(currentIndex + 3));
+					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 3)));
+					SoldData.loanOperations(SoldData.loanBuilder(
+							currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 3))));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
@@ -85,8 +91,9 @@ public class EmployeeOperations {
 				break;
 			case "5":
 				try {
-					System.out.println("Removing:  " + FirstStructure.usedSKU.get(currentIndex + 4));
-					removeCarSelect(FirstStructure.usedSKU.get(currentIndex + 4));
+					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 4)));
+					SoldData.loanOperations(SoldData.loanBuilder(
+							currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 4))));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);

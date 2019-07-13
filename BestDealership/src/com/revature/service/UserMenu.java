@@ -25,7 +25,7 @@ public class UserMenu {
 				String testPassword = userOps.next();
 				if (currentUser.getPassword().equals(testPassword)) {
 					if (currentUser.getAccessLevel() == 2) {
-						employeeMainMenu();
+						employeeMainMenu(currentUser);
 						logInSwitch = 1;
 					} else if (currentUser.getAccessLevel() == 1) {
 						currentUserName = testUserName;
@@ -76,7 +76,7 @@ public class UserMenu {
 		}
 	}
 
-	private static void employeeMainMenu() {
+	private static void employeeMainMenu(User currentUser) {
 		System.out.println(
 				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" 
 						+ "--------Employee Menu--------");
@@ -107,7 +107,7 @@ public class UserMenu {
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
 				// TODO See offers and review
-				EmployeeOperations.findCurrentOffers(0, 1);
+				EmployeeOperations.findCurrentOffers(0, 1, currentUser);
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(6)) {
 				// TODO See Payments

@@ -6,7 +6,7 @@ public class Loan {
 	private String owner = "CustomerUserName";
 	private double balance = 100000.00;
 	private double payment = 999.99;
-	private int loanTerm = 96;
+	private double loanTerm = 96.0;
 	private int paymentsMade = 0;
 	
 	public Loan() {
@@ -14,7 +14,7 @@ public class Loan {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Loan(String signOffEmployee, int sku, String owner, double balance, double payment, int loanTerm,
+	public Loan(String signOffEmployee, int sku, String owner, double balance, double payment, double loanTerm,
 			int paymentsMade) {
 		super();
 		this.signOffEmployee = signOffEmployee;
@@ -66,11 +66,11 @@ public class Loan {
 		this.payment = payment;
 	}
 
-	public int getLoanTerm() {
+	public double getLoanTerm() {
 		return loanTerm;
 	}
 
-	public void setLoanTerm(int loanTerm) {
+	public void setLoanTerm(double loanTerm) {
 		this.loanTerm = loanTerm;
 	}
 
