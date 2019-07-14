@@ -12,9 +12,13 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import com.revature.beans.Car;
+import com.revature.beans.Loan;
+import com.revature.beans.Offer;
 import com.revature.beans.User;
 import com.revature.data.FirstStructure;
 import com.revature.data.LocalUserData;
+import com.revature.data.OffersData;
+import com.revature.data.SoldData;
 import com.revature.service.ScannerFinder;
 
 public class AllDataDAOImpl implements AllDataDAO {
@@ -91,8 +95,6 @@ public class AllDataDAOImpl implements AllDataDAO {
 		String sql1 = "TRUNCATE TABLE CARUSER";
 		PreparedStatement ps1 = connection.prepareStatement(sql1);
 		ps1.executeUpdate();
-		System.out.println(userDataBase);
-		System.out.println(userDataBaseIndex);
 
 		for (int i = 0; i < userDataBaseIndex.size(); i++) {
 			String sql2 = "INSERT INTO CARUSER VALUES(?,?,?,?,?)";
@@ -140,27 +142,110 @@ public class AllDataDAOImpl implements AllDataDAO {
 	}
 
 	@Override
-	public void syncOffersUp() throws SQLException {
-		// TODO Auto-generated method stub
+	public void syncOffersUp(HashMap<Integer, Offer> customerOffers, ArrayList<Integer> offersByCustomer) throws SQLException {
+		Connection connection = cFS.getConnection();
+		// PREPARED STATEMENT - INSERTING ONE CAR FROM MAP AT A TIME
+		String sql1 = "TRUNCATE TABLE OFFERS";
+		PreparedStatement ps1 = connection.prepareStatement(sql1);
+		ps1.executeUpdate();
 
+		for (int i = 0; i < offersByCustomer.size(); i++) {
+			String sql2 = "INSERT INTO OFFERS VALUES(?,?,?,?,?)";
+			System.out.println("Sending Offer:  " + customerOffers.get(offersByCustomer.get(i)).getOfferNumber());
+			PreparedStatement ps = connection.prepareStatement(sql2);
+			ps.setInt(1, customerOffers.get(offersByCustomer.get(i)).getOfferNumber());
+			ps.setString(2, customerOffers.get(offersByCustomer.get(i)).getCustomer());
+			ps.setInt(3, customerOffers.get(offersByCustomer.get(i)).getCarSKU());
+			ps.setDouble(4, customerOffers.get(offersByCustomer.get(i)).getAskingPrice());
+			ps.setDouble(5, customerOffers.get(offersByCustomer.get(i)).getOfferMade());
+
+			ps.executeUpdate();
+		}
 	}
 
 	@Override
 	public void syncOffersDown() throws SQLException {
-		// TODO Auto-generated method stub
+		Connection connection = cFS.getConnection();
+		Statement statement = null;
 
+		String query = "SELECT * FROM OFFERS";
+
+		try {
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			while (rs.next()) {
+				Offer offer = new Offer();
+				offer.setOfferNumber(rs.getInt(1));
+				offer.setCustomer(rs.getString(2));
+				offer.setCarSKU(rs.getInt(3));
+				offer.setAskingPrice(rs.getDouble(4));
+				offer.setOfferMade(rs.getDouble(5));
+				OffersData.customerOffers.put(offer.getOfferNumber(), offer);
+				OffersData.offersByCustomer.add(offer.getOfferNumber());
+			}
+		} catch (SQLException e) {
+			log.info(e);
+		} finally {
+			if (statement != null) {
+				statement.close();
+			}
+		}
 	}
 
 	@Override
-	public void syncSoldUp() throws SQLException {
-		// TODO Auto-generated method stub
+	public void syncSoldUp(HashMap<Integer, Loan> soldCars, ArrayList<Integer> soldCarsIndex) throws SQLException {
+		Connection connection = cFS.getConnection();
+		// PREPARED STATEMENT - INSERTING ONE CAR FROM MAP AT A TIME
+		String sql1 = "TRUNCATE TABLE LOAN";
+		PreparedStatement ps1 = connection.prepareStatement(sql1);
+		ps1.executeUpdate();
+
+		for (int i = 0; i < soldCarsIndex.size(); i++) {
+			String sql2 = "INSERT INTO LOAN VALUES(?,?,?,?,?,?,?,?)";
+			PreparedStatement ps = connection.prepareStatement(sql2);
+			ps.setInt(1, soldCars.get(soldCarsIndex.get(i)).getLoanNumber());
+			ps.setString(2, soldCars.get(soldCarsIndex.get(i)).getSignOffEmployee());
+			ps.setInt(3, soldCars.get(soldCarsIndex.get(i)).getSku());
+			ps.setString(4, soldCars.get(soldCarsIndex.get(i)).getOwner());
+			ps.setDouble(5, soldCars.get(soldCarsIndex.get(i)).getBalance());
+			ps.setDouble(6, soldCars.get(soldCarsIndex.get(i)).getPayment());
+			ps.setDouble(7, soldCars.get(soldCarsIndex.get(i)).getLoanTerm());
+			ps.setInt(8, soldCars.get(soldCarsIndex.get(i)).getPaymentsMade());
+			ps.executeUpdate();
+		}
 
 	}
 
 	@Override
 	public void syncSoldDown() throws SQLException {
-		// TODO Auto-generated method stub
+		Connection connection = cFS.getConnection();
+		Statement statement = null;
 
+		String query = "SELECT * FROM LOAN";
+
+		try {
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery(query);
+			while (rs.next()) {
+				Loan loan = new Loan();
+				loan.setLoanNumber(rs.getInt(1));
+				loan.setSignOffEmployee(rs.getString(2));
+				loan.setSku(rs.getInt(3));
+				loan.setOwner(rs.getString(4));
+				loan.setBalance(rs.getDouble(5));
+				loan.setPayment(rs.getDouble(6));
+				loan.setLoanTerm(rs.getDouble(7));
+				loan.setPaymentsMade(rs.getInt(8));
+				SoldData.soldCars.put(loan.getLoanNumber(), loan);
+				SoldData.soldCarsIndex.add(loan.getLoanNumber());
+			}
+		} catch (SQLException e) {
+			log.info(e);
+		} finally {
+			if (statement != null) {
+				statement.close();
+			}
+		}
 	}
 
 }

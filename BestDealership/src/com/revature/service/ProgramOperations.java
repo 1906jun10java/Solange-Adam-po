@@ -10,6 +10,8 @@ import com.revature.beans.User;
 import com.revature.connection.AllDataDAOImpl;
 import com.revature.data.FirstStructure;
 import com.revature.data.LocalUserData;
+import com.revature.data.OffersData;
+import com.revature.data.SoldData;
 import com.revature.driver.CustomExceptions;
 
 public class ProgramOperations {
@@ -36,19 +38,21 @@ public class ProgramOperations {
 		try {
 			aDDI.syncCarsDown();
 			aDDI.syncUsersDown();
-			//TODO add all the syncDown() here
+			aDDI.syncOffersDown();
+			aDDI.syncSoldDown();
+			// TODO add all the syncDown() here
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			log.error(e1);
 		}
-		
+
 		try {
 			TimeUnit.MILLISECONDS.sleep(400);
 		} catch (InterruptedException e) {
 			log.warn(e);
 		}
-		
-		//Method only for initializing Data Base
+
+		// Method only for initializing Data Base
 //		LocalUserData.getUserDataBase();
 
 		return true;
@@ -62,7 +66,9 @@ public class ProgramOperations {
 		try {
 			aDDI.syncCarsUp(FirstStructure.lotInventory, FirstStructure.usedSKU);
 			aDDI.syncUsersUp(LocalUserData.userDataBase, LocalUserData.userDataBaseIndex);
-			//TODO add all syncUp() here
+			aDDI.syncOffersUp(OffersData.customerOffers, OffersData.offersByCustomer);
+			aDDI.syncSoldUp(SoldData.soldCars, SoldData.soldCarsIndex);
+
 		} catch (SQLException e1) {
 
 //			e1.printStackTrace();
@@ -78,11 +84,6 @@ public class ProgramOperations {
 	}
 
 	public static void logInMenu() {
-		// NOTE This is the first menu the user will see.
-		// Here the user will log in or create a new account
-		// Eventually an employee will be able to create an
-		// employee account using a 'supervisor' passcode
-		// 'passcode'
 
 		int stayOn = 1;
 		while (stayOn == 1) {

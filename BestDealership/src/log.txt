@@ -37,3 +37,7 @@
 
 2019-07-14 09:57:40 ERROR root:67 - java.sql.SQLSyntaxErrorException: ORA-00947: not enough values
 
+2019-07-14 11:23:49 INFO  root:85 - Payment made for loan: Loan: 92570 | For Car: 492011 has a balance of: $84416.17910324712 and $1583.8208967528733 monthly payment.
+---Number of payments made is: 1 of 60.0 
+        by customer:User [userName=diplomat, password=warriors, firstName=Robert, lastName=Murphy, accessLevel=1]
+
