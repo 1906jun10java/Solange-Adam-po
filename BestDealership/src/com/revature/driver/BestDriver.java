@@ -12,22 +12,17 @@ public class BestDriver {
 		ProgramOperations.startProgram();
 		ProgramOperations.logInMenu();
 		ProgramOperations.endProgram();
-		
-		
 		//sc.close();
-
 	}
 
 
 	public static void testMethod() {
-		// TODO Auto-generated method stub
 		try {
 			throw new NullPointerException("go!");
 		}
 		catch(NullPointerException e) {
 			System.out.println("ARMS for data structure");
 			log.error("attempt to enter error log go!" + e.getStackTrace());
-			// rethrowing the exception
 		}
 	}
 }

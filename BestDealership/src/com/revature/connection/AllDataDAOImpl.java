@@ -73,8 +73,6 @@ public class AllDataDAOImpl implements AllDataDAO {
 				FirstStructure.usedSKU.add(car.getSku());
 
 			}
-			System.out.println(FirstStructure.lotInventory);
-			System.out.println(FirstStructure.usedSKU);
 
 		} catch (SQLException e) {
 			log.info(e);
@@ -202,6 +200,7 @@ public class AllDataDAOImpl implements AllDataDAO {
 
 		for (int i = 0; i < soldCarsIndex.size(); i++) {
 			String sql2 = "INSERT INTO LOAN VALUES(?,?,?,?,?,?,?,?)";
+			System.out.println("Sending LOAN:  " + soldCars.get(soldCarsIndex.get(i)).getLoanNumber());
 			PreparedStatement ps = connection.prepareStatement(sql2);
 			ps.setInt(1, soldCars.get(soldCarsIndex.get(i)).getLoanNumber());
 			ps.setString(2, soldCars.get(soldCarsIndex.get(i)).getSignOffEmployee());

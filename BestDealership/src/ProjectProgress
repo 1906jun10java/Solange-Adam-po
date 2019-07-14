@@ -3,12 +3,12 @@
 1. Functionality should reflect the below user 					1
 		stories.
 
-2. Data is stored in a database.								0
+2. Data is stored in a database.								1
 
 3. A custom stored procedure is called to perform 				0
 		some portion of the functionality.
 		
-4. Data Access is performed through the use of 					0
+4. Data Access is performed through the use of 					1
 		JDBC in a data layer consisting of Data 
 		Access Objects.
 		
