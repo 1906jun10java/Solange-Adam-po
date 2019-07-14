@@ -8,7 +8,7 @@ import com.revature.data.*;
 
 public class UserMenu {
 	static Scanner userOps = new Scanner(System.in);
-	public static ArrayList<String> currentUserList = new ArrayList<>();
+	public static String currentUserName = "test";
 
 	public static void systemLogIn() {
 		int logInSwitch = 0;
@@ -25,11 +25,11 @@ public class UserMenu {
 				String testPassword = userOps.next();
 				if (currentUser.getPassword().equals(testPassword)) {
 					if (currentUser.getAccessLevel() == 2) {
-						employeeMainMenu();
+						employeeMainMenu(currentUser);
 						logInSwitch = 1;
 					} else if (currentUser.getAccessLevel() == 1) {
-						currentUserList.add(testUserName);
-						customerMainMenu();
+						currentUserName = testUserName;
+						customerMainMenu(currentUser);
 						logInSwitch = 1;
 					}
 				} else {
@@ -40,56 +40,67 @@ public class UserMenu {
 		}
 	}
 
-	private static void customerMainMenu() {
+	private static void customerMainMenu(User currentUser) {
 		System.out.println(
-				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nn\n\n\n\n\n\n\n\n\n\n\n\n" + "--------Customer Menu--------");
+				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" 
+						+ "--------Customer Menu--------");
 		int stayLoggedIn = 1;
 		while (stayLoggedIn == 1) {
 			System.out.println("Please enter: \n\"1\" to view our current inventory and place an offer, "
-					+ "\n\"2\" to view your current owned vehicles and offers" + "\n\"3\" to exit\n--------\n ");
+					+ "\n\"2\" to view your current offers" 
+					+ "\n\"3\" to view your current loans and make payments" 
+					+ "\n\"4\" to exit\n--------\n ");
 			// TODO Remove problem solve
 //			String logInMenuInput = "2";
 			String logInMenuInput = ZzFirstTryAtScannerSingleton.generalStringInput();
-			String possibleEntry = "1,2,3";
+			String possibleEntry = "1,2,3,4";
 			if (logInMenuInput.length() < 2 & logInMenuInput.charAt(0) != possibleEntry.charAt(0)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(2)
-					& logInMenuInput.charAt(0) != possibleEntry.charAt(4)) {
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(4)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(6)) {
 				System.out.println("Invalid entry ...\n");
 				// TODO put in a one second sleep here
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(0)) {
 				// place offer menu
-				CustomerOffers.placeOffer(0, 1);
+				CustomerOffers.placeOffer(0, 1, currentUser);
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(2)) {
 				System.out.println("Viewing your cars");
-				OffersData.showOffers();
-				// view owned cars and offers
+				OffersData.showMyOffers(currentUser);
+
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
+				System.out.println("Viewing Loans");
+				CustomerOffers.findMyLoans(0, 1, currentUser);
+
+			}	else if (logInMenuInput.charAt(0) == possibleEntry.charAt(6)) {
 				System.out.println("Logging you out");
 				stayLoggedIn = 0;
-				// exit the menus and program
 			}
+			
 		}
 	}
 
-	private static void employeeMainMenu() {
+	private static void employeeMainMenu(User currentUser) {
 		System.out.println(
-				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + "--------Employee Menu--------");
+				"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" 
+						+ "--------Employee Menu--------");
 		int stayLoggedIn = 1;
 		while (stayLoggedIn == 1) {
 			System.out.println("Please enter: \n\"1\" to add a vehicle to the lot "
 					+ "\n\"2\" to remove a vehicle from the lot" + "\n\"3\" to review current offers"
-					+ "\n\"4\" see current payments (under-construction)" + "\n\"5\" to exit\n--------\n ");
+					+ "\n\"4\" see current loans" + "\n\"5\" see loan payments made by name"
+					+ "\n\"6\" to exit\n--------\n ");
 			// TODO Remove problem solve
 //			String logInMenuInput = "2";
 			String logInMenuInput = ZzFirstTryAtScannerSingleton.generalStringInput();
-			String possibleEntry = "1,2,3,4,5";
+			String possibleEntry = "1,2,3,4,5,6";
 			if (logInMenuInput.length() < 2 & logInMenuInput.charAt(0) != possibleEntry.charAt(0)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(2)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(4)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(6)
-					& logInMenuInput.charAt(0) != possibleEntry.charAt(8)) {
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(8)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(10)) {
 				System.out.println("Invalid entry ...\n");
 				// TODO put in a one second sleep here
 
@@ -103,14 +114,15 @@ public class UserMenu {
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(4)) {
 				// TODO See offers and review
-				OffersData.showOffers();
+				EmployeeOperations.findCurrentOffers(0, 1, currentUser);
 
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(6)) {
 				// TODO See Payments
-				System.out.println("Currently unavailable, please contact your system administrator.  \n"  
-					+ "Current wait time is: 999 Day(s)");
-
+				EmployeeOperations.findCurrentSoldCars(0, 1, currentUser);
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(8)) {
+				// TODO See Payments
+				EmployeeOperations.findPayments();
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(10)) {
 				System.out.println("Logging you out");
 				stayLoggedIn = 0;
 			}

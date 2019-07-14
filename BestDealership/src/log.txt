@@ -6,3 +6,51 @@
 2019-07-07 13:48:06 INFO  root:142 - com.revature.driver.CustomExceptions: WARN:  Invalid password entry for new employee account creation
 2019-07-10 09:24:53 INFO  root:122 - java.lang.NumberFormatException: For input string: "Eric"
 2019-07-10 10:34:30 INFO  root:62 - java.lang.IndexOutOfBoundsException: Index: 16, Size: 16
+2019-07-11 19:42:00 INFO  root:89 - java.lang.IndexOutOfBoundsException: Index: 4, Size: 4
+2019-07-11 19:44:25 INFO  root:89 - java.lang.IndexOutOfBoundsException: Index: 4, Size: 4
+2019-07-13 11:07:11 INFO  root:76 - java.lang.IndexOutOfBoundsException: Index: 317491, Size: 3
+2019-07-13 11:09:15 INFO  root:76 - java.lang.NullPointerException
+2019-07-13 11:09:24 INFO  root:66 - java.lang.NullPointerException
+2019-07-13 11:14:04 INFO  root:76 - java.lang.IndexOutOfBoundsException: Index: 184898, Size: 4
+2019-07-13 11:46:02 INFO  root:85 - Payment made for loan: Loan: 79971 | For Car: 109647 has a balance of: $78526.67823557873 and $1473.3217644212775 monthly payment.
+---Number of payments made is: 1 of 60.0 
+        by customer:User [userName=aa, password=aa, firstName=aa, lastName=aa, accessLevel=1]
+
+2019-07-13 11:46:13 INFO  root:85 - Payment made for loan: Loan: 79971 | For Car: 109647 has a balance of: $77053.35647115746 and $1473.3217644212775 monthly payment.
+---Number of payments made is: 2 of 60.0 
+        by customer:User [userName=aa, password=aa, firstName=aa, lastName=aa, accessLevel=1]
+
+2019-07-13 16:14:51 ERROR root:41 - java.io.FileNotFoundException: conneciton.properties (The system cannot find the file specified)
+2019-07-13 16:18:06 ERROR root:41 - java.io.FileNotFoundException: connection.properties (The system cannot find the file specified)
+2019-07-13 16:19:18 ERROR root:41 - java.lang.ClassNotFoundException: oracle.jdbc.driver.OracleDriver
+2019-07-13 20:18:17 INFO  root:59 - java.sql.SQLSyntaxErrorException: ORA-00923: FROM keyword not found where expected
+
+2019-07-13 20:23:12 INFO  root:60 - java.sql.SQLException: Invalid column name
+2019-07-14 08:28:13 INFO  root:63 - java.sql.SQLException: Fail to convert to internal representation
+2019-07-14 09:22:37 INFO  root:85 - Payment made for loan: Loan: 57457 | For Car: 442453 has a balance of: $12269.793474309176 and $230.2065256908246 monthly payment.
+---Number of payments made is: 1 of 60.0 
+        by customer:User [userName=customer, password=password, firstName=Test, lastName=Customer, accessLevel=1]
+
+2019-07-14 09:23:08 INFO  root:85 - Payment made for loan: Loan: 57457 | For Car: 442453 has a balance of: $12039.586948618351 and $230.2065256908246 monthly payment.
+---Number of payments made is: 2 of 60.0 
+        by customer:User [userName=customer, password=password, firstName=Test, lastName=Customer, accessLevel=1]
+
+2019-07-14 09:57:40 ERROR root:67 - java.sql.SQLSyntaxErrorException: ORA-00947: not enough values
+
+2019-07-14 11:23:49 INFO  root:85 - Payment made for loan: Loan: 92570 | For Car: 492011 has a balance of: $84416.17910324712 and $1583.8208967528733 monthly payment.
+---Number of payments made is: 1 of 60.0 
+        by customer:User [userName=diplomat, password=warriors, firstName=Robert, lastName=Murphy, accessLevel=1]
+
+2019-07-14 15:11:31 INFO  root:260 - java.sql.SQLException: ORA-01008: not all variables bound
+
+2019-07-14 15:24:10 INFO  root:268 - java.sql.SQLException: ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'GET_PAYMENTS_TWO'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+2019-07-14 15:32:19 INFO  root:267 - java.sql.SQLException: ORA-01008: not all variables bound
+
+2019-07-14 15:34:14 INFO  root:267 - java.sql.SQLException: ORA-01008: not all variables bound
+
+2019-07-14 15:36:49 INFO  root:268 - java.sql.SQLException: ORA-01008: not all variables bound
+
