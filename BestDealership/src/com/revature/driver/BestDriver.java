@@ -10,8 +10,8 @@ public class BestDriver {
 
 	public static void main(String[] args) {
 		ProgramOperations.startProgram();
-//		ProgramOperations.logInMenu();
-//		ProgramOperations.endProgram();
+		ProgramOperations.logInMenu();
+		ProgramOperations.endProgram();
 		
 		
 		//sc.close();

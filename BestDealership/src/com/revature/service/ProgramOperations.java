@@ -34,7 +34,9 @@ public class ProgramOperations {
 //		vehicleAdder(4, 0);
 		AllDataDAOImpl aDDI = new AllDataDAOImpl();
 		try {
-			aDDI.syncCarsDown(FirstStructure.lotInventory, FirstStructure.usedSKU);
+			aDDI.syncCarsDown();
+			aDDI.syncUsersDown();
+			//TODO add all the syncDown() here
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			log.error(e1);
@@ -45,9 +47,10 @@ public class ProgramOperations {
 		} catch (InterruptedException e) {
 			log.warn(e);
 		}
-		LocalUserData.getUserDataBase();
-//		FirstStructure.lotInventoryPrint();
-		// TODO add user database generator (for testing reasons)
+		
+		//Method only for initializing Data Base
+//		LocalUserData.getUserDataBase();
+
 		return true;
 	}
 
@@ -58,13 +61,15 @@ public class ProgramOperations {
 		AllDataDAOImpl aDDI = new AllDataDAOImpl();
 		try {
 			aDDI.syncCarsUp(FirstStructure.lotInventory, FirstStructure.usedSKU);
+			aDDI.syncUsersUp(LocalUserData.userDataBase, LocalUserData.userDataBaseIndex);
+			//TODO add all syncUp() here
 		} catch (SQLException e1) {
 
 //			e1.printStackTrace();
 			log.error(e1);
 		}
 		try {
-			TimeUnit.SECONDS.sleep(2);
+			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
 			log.warn(e);
 		}
@@ -117,6 +122,7 @@ public class ProgramOperations {
 
 			User newUser = new User(testUserName, password, firstName, lastName, accessLevel);
 			LocalUserData.userDataBase.put(testUserName, newUser);
+			LocalUserData.userDataBaseIndex.add(testUserName);
 			try {
 				TimeUnit.SECONDS.sleep(1);
 			} catch (InterruptedException e) {

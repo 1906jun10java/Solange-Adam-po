@@ -26,3 +26,14 @@
 2019-07-13 20:18:17 INFO  root:59 - java.sql.SQLSyntaxErrorException: ORA-00923: FROM keyword not found where expected
 
 2019-07-13 20:23:12 INFO  root:60 - java.sql.SQLException: Invalid column name
+2019-07-14 08:28:13 INFO  root:63 - java.sql.SQLException: Fail to convert to internal representation
+2019-07-14 09:22:37 INFO  root:85 - Payment made for loan: Loan: 57457 | For Car: 442453 has a balance of: $12269.793474309176 and $230.2065256908246 monthly payment.
+---Number of payments made is: 1 of 60.0 
+        by customer:User [userName=customer, password=password, firstName=Test, lastName=Customer, accessLevel=1]
+
+2019-07-14 09:23:08 INFO  root:85 - Payment made for loan: Loan: 57457 | For Car: 442453 has a balance of: $12039.586948618351 and $230.2065256908246 monthly payment.
+---Number of payments made is: 2 of 60.0 
+        by customer:User [userName=customer, password=password, firstName=Test, lastName=Customer, accessLevel=1]
+
+2019-07-14 09:57:40 ERROR root:67 - java.sql.SQLSyntaxErrorException: ORA-00947: not enough values
+
