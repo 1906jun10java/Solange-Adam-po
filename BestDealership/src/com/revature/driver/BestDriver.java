@@ -10,18 +10,14 @@ public class BestDriver {
 
 	public static void main(String[] args) {
 		ProgramOperations.startProgram();
-		ProgramOperations.logInMenu();
-
-//		testMethod();
-//		FirstStructure.lotInventoryPrint();
-		//TODO add more methods of the program
-		ProgramOperations.endProgram();
+//		ProgramOperations.logInMenu();
+//		ProgramOperations.endProgram();
 		
 		
 		//sc.close();
 
 	}
-	 //did something
+
 
 	public static void testMethod() {
 		// TODO Auto-generated method stub
@@ -33,10 +29,5 @@ public class BestDriver {
 			log.error("attempt to enter error log go!" + e.getStackTrace());
 			// rethrowing the exception
 		}
-		
 	}
-	
-	//TODO REMOVE - Git Hub setup test for feature-driver
-	//D:\005_Java\Solange-Adam-po\BestDealership\src\com\revature\driver
-
 }

@@ -3,7 +3,7 @@ package com.revature.beans;
 public class User {
 	//Menus and fields will determine the difference between employees.  
 	//UserCustomer and UserEmploye children classes are not needed.
-	private String userName = "TestName";
+	private String user = "TestName";
 	private String password = "TestPassword";
 	private String firstName = "Card";
 	private String lastName = "Holder";
@@ -17,7 +17,7 @@ public class User {
 
 	public User(String userName, String password, String firstName, String lastName, int accessLevel) {
 		super();
-		this.userName = userName;
+		this.user = userName;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -26,10 +26,10 @@ public class User {
 
 	//Getters and Setters
 	public String getUserName() {
-		return userName;
+		return user;
 	}
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.user = userName;
 	}
 	public String getPassword() {
 		return password;
@@ -58,7 +58,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userName=" + userName + ", password=" + password + ", firstName=" + firstName + ", lastName="
+		return "User [userName=" + user + ", password=" + password + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", accessLevel=" + accessLevel + "]\n";
 	}
 	

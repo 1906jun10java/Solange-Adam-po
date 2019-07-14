@@ -20,3 +20,9 @@
 ---Number of payments made is: 2 of 60.0 
         by customer:User [userName=aa, password=aa, firstName=aa, lastName=aa, accessLevel=1]
 
+2019-07-13 16:14:51 ERROR root:41 - java.io.FileNotFoundException: conneciton.properties (The system cannot find the file specified)
+2019-07-13 16:18:06 ERROR root:41 - java.io.FileNotFoundException: connection.properties (The system cannot find the file specified)
+2019-07-13 16:19:18 ERROR root:41 - java.lang.ClassNotFoundException: oracle.jdbc.driver.OracleDriver
+2019-07-13 20:18:17 INFO  root:59 - java.sql.SQLSyntaxErrorException: ORA-00923: FROM keyword not found where expected
+
+2019-07-13 20:23:12 INFO  root:60 - java.sql.SQLException: Invalid column name

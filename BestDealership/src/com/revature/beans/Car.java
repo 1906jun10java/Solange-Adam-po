@@ -9,7 +9,7 @@ public class Car {
 	private int miles = 0;
 	private int year = 9999;
 	private double price = 150000.00;
-	private String ownedBy ="lot";
+//	private String ownedBy ="lot";
 	
 	//constructors
 	public Car() {

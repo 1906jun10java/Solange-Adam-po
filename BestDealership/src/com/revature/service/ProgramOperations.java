@@ -1,11 +1,13 @@
 package com.revature.service;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 
 import com.revature.beans.User;
+import com.revature.connection.AllDataDAOImpl;
 import com.revature.data.FirstStructure;
 import com.revature.data.LocalUserData;
 import com.revature.driver.CustomExceptions;
@@ -24,16 +26,24 @@ public class ProgramOperations {
 		System.out.println("--------------------------------" + "\nStarting Best Dealership Interface"
 				+ "\n--------------------------------\n");
 		try {
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.MILLISECONDS.sleep(400);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		System.out.println("...");
-		vehicleAdder(4, 0);
+//		vehicleAdder(4, 0);
+		AllDataDAOImpl aDDI = new AllDataDAOImpl();
 		try {
-			TimeUnit.SECONDS.sleep(1);
+			aDDI.syncCarsDown(FirstStructure.lotInventory, FirstStructure.usedSKU);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			log.error(e1);
+		}
+		
+		try {
+			TimeUnit.MILLISECONDS.sleep(400);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			log.warn(e);
 		}
 		LocalUserData.getUserDataBase();
 //		FirstStructure.lotInventoryPrint();
@@ -45,10 +55,18 @@ public class ProgramOperations {
 		// sign off message
 		System.out.println("--------------------------------" + "\nThank you for using Best Dealership Interface"
 				+ "\n--------------------------------\n");
+		AllDataDAOImpl aDDI = new AllDataDAOImpl();
+		try {
+			aDDI.syncCarsUp(FirstStructure.lotInventory, FirstStructure.usedSKU);
+		} catch (SQLException e1) {
+
+//			e1.printStackTrace();
+			log.error(e1);
+		}
 		try {
 			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			log.warn(e);
 		}
 		System.out.println("End of Line");
 		// TODO add any networking data transfer needed
