@@ -1,5 +1,6 @@
 package com.revature.connection;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -140,7 +141,8 @@ public class AllDataDAOImpl implements AllDataDAO {
 	}
 
 	@Override
-	public void syncOffersUp(HashMap<Integer, Offer> customerOffers, ArrayList<Integer> offersByCustomer) throws SQLException {
+	public void syncOffersUp(HashMap<Integer, Offer> customerOffers, ArrayList<Integer> offersByCustomer)
+			throws SQLException {
 		Connection connection = cFS.getConnection();
 		// PREPARED STATEMENT - INSERTING ONE CAR FROM MAP AT A TIME
 		String sql1 = "TRUNCATE TABLE OFFERS";
@@ -245,6 +247,27 @@ public class AllDataDAOImpl implements AllDataDAO {
 				statement.close();
 			}
 		}
+	}
+
+	public void findPayments(String owner) {
+		Connection connection = cFS.getConnection();
+
+		String sql = "CALL GET_PAYMENTS_TWO(?)";
+		try {
+			CallableStatement cs = connection.prepareCall(sql);
+			
+			cs.setString(1, owner);
+			ResultSet rs = cs.executeQuery(sql);
+			System.out.println(rs);
+			while (rs.next()) {
+				int payments = rs.getInt("LOAN_PAYMENTS_MADE");
+				System.out.println(payments);
+			}
+
+		} catch (SQLException e) {
+			log.info(e);
+		}
+
 	}
 
 }

@@ -1,21 +1,21 @@
 package com.revature.service;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
 import com.revature.beans.User;
+import com.revature.connection.AllDataDAOImpl;
 import com.revature.data.FirstStructure;
 import com.revature.data.OffersData;
 import com.revature.data.SoldData;
-
 
 public class EmployeeOperations {
 	static ScannerFinder scannerRomeo = ScannerFinder.getScannerInstance();
 	static Scanner scannerActual = scannerRomeo.runScanner();
 	public static Logger log = Logger.getRootLogger();
-	
-	
+
 	// vvvvvv View and accept offers vvvvvv
 	// first call of this needs to be 0, 1
 	public static void findCurrentOffers(int indexMover, int pageMover, User currentUser) {
@@ -40,7 +40,8 @@ public class EmployeeOperations {
 			offerMenuBreak = 1;
 		}
 	}
-	//TODO make SoldData Map and companion 
+
+	// TODO make SoldData Map and companion
 	public static int currentOffersMenu(String carMenu, int currentIndex, int pageNumber, User currentUser) {
 		int menuChoice = 0;
 		String possibleEntry = ("1,2,3,4,5,6,7");
@@ -53,14 +54,18 @@ public class EmployeeOperations {
 		} else {
 			switch (carMenu) {
 			case "1":
-				System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 0)));
-				SoldData.sellCar(currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 0)));
+				System.out.println("Accepting:  "
+						+ OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 0)));
+				SoldData.sellCar(currentUser,
+						OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 0)));
 				menuChoice = 1;
 				break;
 			case "2":
 				try {
-					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 1)));
-					SoldData.sellCar(currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 1)));
+					System.out.println("Accepting:  "
+							+ OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 1)));
+					SoldData.sellCar(currentUser,
+							OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 1)));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
@@ -69,8 +74,10 @@ public class EmployeeOperations {
 				break;
 			case "3":
 				try {
-					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 2)));
-					SoldData.sellCar(currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 2)));
+					System.out.println("Accepting:  "
+							+ OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 2)));
+					SoldData.sellCar(currentUser,
+							OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 2)));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
@@ -78,8 +85,10 @@ public class EmployeeOperations {
 				break;
 			case "4":
 				try {
-					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 3)));
-					SoldData.sellCar(currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 3)));
+					System.out.println("Accepting:  "
+							+ OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 3)));
+					SoldData.sellCar(currentUser,
+							OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 3)));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
@@ -87,8 +96,10 @@ public class EmployeeOperations {
 				break;
 			case "5":
 				try {
-					System.out.println("Accepting:  " + OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 4)));
-					SoldData.sellCar(currentUser, OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 4)));
+					System.out.println("Accepting:  "
+							+ OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 4)));
+					SoldData.sellCar(currentUser,
+							OffersData.customerOffers.get(OffersData.offersByCustomer.get(currentIndex + 4)));
 				} catch (Exception e) {
 					System.out.println("Unable to remove - ask your co-worker why to decrease productivity");
 					log.info(e);
@@ -110,20 +121,19 @@ public class EmployeeOperations {
 	}
 
 	public static boolean removeCarSelect(Integer sku) {
-		System.out.println("Are you sure you wish to remove car:  "+ FirstStructure.lotInventory.get(sku) + "?"
+		System.out.println("Are you sure you wish to remove car:  " + FirstStructure.lotInventory.get(sku) + "?"
 				+ "\n Enter \"1\" to comfirm removal from the lot.  WARNING - This action is final"
 				+ "\n Enter \"2\" to cancel removal.");
 		String offerAmountInput = scannerActual.next();
-		//USING .equals MAKES IT WAY BETTER THEN THE COMPLICATED STRING VERSION
+		// USING .equals MAKES IT WAY BETTER THEN THE COMPLICATED STRING VERSION
 		if (offerAmountInput.equals("1")) {
 			FirstStructure.removeCar(sku);
 			return true;
 		}
 		return false;
 	}
-	
-	
-	//vvvvvv View and remove Cars vvvvvv
+
+	// vvvvvv View and remove Cars vvvvvv
 	// first call of this needs to be 0, 1
 	public static void findInventory(int indexMover, int pageMover) {
 		int currentIndex = 0 + indexMover;
@@ -147,7 +157,7 @@ public class EmployeeOperations {
 			offerMenuBreak = 1;
 		}
 	}
-		
+
 	public static int inventoryMenu(String carMenu, int currentIndex, int pageNumber) {
 		int menuChoice = 0;
 		String possibleEntry = ("1,2,3,4,5,6,7");
@@ -215,9 +225,9 @@ public class EmployeeOperations {
 		}
 		return menuChoice;
 	}
-	
-	//!!!!!!!vvvvvvv Viewing Sold Cars and Payments vvvvvvv!!!!!!!
-	
+
+	// !!!!!!!vvvvvvv Viewing Sold Cars and Payments vvvvvvv!!!!!!!
+
 	public static void findCurrentSoldCars(int indexMover, int pageMover, User currentUser) {
 		int currentIndex = 0 + indexMover;
 		int indexLimit = 5 + indexMover;
@@ -240,8 +250,7 @@ public class EmployeeOperations {
 			offerMenuBreak = 1;
 		}
 	}
-	
-	
+
 	public static int currentSoldCars(String carMenu, int currentIndex, int pageNumber, User currentUser) {
 		int menuChoice = 0;
 		String possibleEntry = ("1,2,3,4,5,6,7");
@@ -309,6 +318,14 @@ public class EmployeeOperations {
 		}
 		return menuChoice;
 	}
-	
-	
+
+	public static void findPayments() {
+		System.out.println("Please enter the USERNAME of the payments you would like to see");
+		String owner = scannerActual.next();
+		AllDataDAOImpl aDDI = new AllDataDAOImpl();
+
+		aDDI.findPayments(owner);
+
+	}
+
 }

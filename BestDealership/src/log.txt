@@ -41,3 +41,16 @@
 ---Number of payments made is: 1 of 60.0 
         by customer:User [userName=diplomat, password=warriors, firstName=Robert, lastName=Murphy, accessLevel=1]
 
+2019-07-14 15:11:31 INFO  root:260 - java.sql.SQLException: ORA-01008: not all variables bound
+
+2019-07-14 15:24:10 INFO  root:268 - java.sql.SQLException: ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'GET_PAYMENTS_TWO'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+2019-07-14 15:32:19 INFO  root:267 - java.sql.SQLException: ORA-01008: not all variables bound
+
+2019-07-14 15:34:14 INFO  root:267 - java.sql.SQLException: ORA-01008: not all variables bound
+
+2019-07-14 15:36:49 INFO  root:268 - java.sql.SQLException: ORA-01008: not all variables bound
+

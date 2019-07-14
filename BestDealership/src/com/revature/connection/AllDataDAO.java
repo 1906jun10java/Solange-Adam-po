@@ -29,5 +29,7 @@ public interface AllDataDAO {
 	public void syncSoldUp(HashMap<Integer, Loan> soldCars, ArrayList<Integer> soldCarsIndex) throws SQLException;
 	
 	public void syncSoldDown() throws SQLException;
+	
+	public void findPayments(String owner);
 
 }

@@ -89,16 +89,18 @@ public class UserMenu {
 		while (stayLoggedIn == 1) {
 			System.out.println("Please enter: \n\"1\" to add a vehicle to the lot "
 					+ "\n\"2\" to remove a vehicle from the lot" + "\n\"3\" to review current offers"
-					+ "\n\"4\" see current payments (under-construction)" + "\n\"5\" to exit\n--------\n ");
+					+ "\n\"4\" see current loans" + "\n\"5\" see loan payments made by name"
+					+ "\n\"6\" to exit\n--------\n ");
 			// TODO Remove problem solve
 //			String logInMenuInput = "2";
 			String logInMenuInput = ZzFirstTryAtScannerSingleton.generalStringInput();
-			String possibleEntry = "1,2,3,4,5";
+			String possibleEntry = "1,2,3,4,5,6";
 			if (logInMenuInput.length() < 2 & logInMenuInput.charAt(0) != possibleEntry.charAt(0)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(2)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(4)
 					& logInMenuInput.charAt(0) != possibleEntry.charAt(6)
-					& logInMenuInput.charAt(0) != possibleEntry.charAt(8)) {
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(8)
+					& logInMenuInput.charAt(0) != possibleEntry.charAt(10)) {
 				System.out.println("Invalid entry ...\n");
 				// TODO put in a one second sleep here
 
@@ -117,10 +119,10 @@ public class UserMenu {
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(6)) {
 				// TODO See Payments
 				EmployeeOperations.findCurrentSoldCars(0, 1, currentUser);
-				System.out.println("Currently unavailable, please contact your system administrator.  \n"  
-					+ "Current wait time is: 999 Day(s)");
-
 			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(8)) {
+				// TODO See Payments
+				EmployeeOperations.findPayments();
+			} else if (logInMenuInput.charAt(0) == possibleEntry.charAt(10)) {
 				System.out.println("Logging you out");
 				stayLoggedIn = 0;
 			}
