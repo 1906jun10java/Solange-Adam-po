@@ -7,8 +7,12 @@ public class Offer {
 	private String customer = "CustomerUserNameHere";
 	private int carSKU = 100000;
 	private double askingPrice = 150000;
-	private double offerMade= 0.0;
-	
+	private double offerMade = 0.0;
+
+	public Offer() {
+		super();
+	}
+
 	public Offer(int offerNumber, String customer, int carSKU, double askingPrice, double offerMade) {
 		super();
 		this.offerNumber = offerNumber;
@@ -46,7 +50,7 @@ public class Offer {
 		return askingPrice;
 	}
 
-	public void setAskingPrice(int askingPrice) {
+	public void setAskingPrice(double askingPrice) {
 		this.askingPrice = askingPrice;
 	}
 
@@ -60,9 +64,9 @@ public class Offer {
 
 	@Override
 	public String toString() {
-		return ("\nYou made an offer of $" + offerMade + " for the: \n" 
+		return ("\nOffer made by " + customer + " of $" + offerMade + " for the: \n"
 				+ FirstStructure.lotInventory.get(carSKU) + "\n ");
-		
+
 //		return "Offer [offerNumber=" + offerNumber + ", customer=" + customer + ", carSKU=" + carSKU + ", askingPrice="
 //				+ askingPrice + ", offerMade=" + offerMade + "]";
 	}

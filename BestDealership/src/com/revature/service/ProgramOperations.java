@@ -1,13 +1,17 @@
 package com.revature.service;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 
 import com.revature.beans.User;
+import com.revature.connection.AllDataDAOImpl;
 import com.revature.data.FirstStructure;
 import com.revature.data.LocalUserData;
+import com.revature.data.OffersData;
+import com.revature.data.SoldData;
 import com.revature.driver.CustomExceptions;
 
 public class ProgramOperations {
@@ -24,20 +28,33 @@ public class ProgramOperations {
 		System.out.println("--------------------------------" + "\nStarting Best Dealership Interface"
 				+ "\n--------------------------------\n");
 		try {
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.MILLISECONDS.sleep(400);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		System.out.println("...");
-		vehicleAdder(4, 0);
+//		vehicleAdder(4, 0);
+		AllDataDAOImpl aDDI = new AllDataDAOImpl();
 		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+			aDDI.syncCarsDown();
+			aDDI.syncUsersDown();
+			aDDI.syncOffersDown();
+			aDDI.syncSoldDown();
+			// TODO add all the syncDown() here
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			log.error(e1);
 		}
-		LocalUserData.getUserDataBase();
-//		FirstStructure.lotInventoryPrint();
-		// TODO add user database generator (for testing reasons)
+
+		try {
+			TimeUnit.MILLISECONDS.sleep(400);
+		} catch (InterruptedException e) {
+			log.warn(e);
+		}
+
+		// Method only for initializing Data Base
+//		LocalUserData.getUserDataBase();
+
 		return true;
 	}
 
@@ -45,21 +62,28 @@ public class ProgramOperations {
 		// sign off message
 		System.out.println("--------------------------------" + "\nThank you for using Best Dealership Interface"
 				+ "\n--------------------------------\n");
+		AllDataDAOImpl aDDI = new AllDataDAOImpl();
 		try {
-			TimeUnit.SECONDS.sleep(2);
+			aDDI.syncCarsUp(FirstStructure.lotInventory, FirstStructure.usedSKU);
+			aDDI.syncUsersUp(LocalUserData.userDataBase, LocalUserData.userDataBaseIndex);
+			aDDI.syncOffersUp(OffersData.customerOffers, OffersData.offersByCustomer);
+			aDDI.syncSoldUp(SoldData.soldCars, SoldData.soldCarsIndex);
+
+		} catch (SQLException e1) {
+
+//			e1.printStackTrace();
+			log.error(e1);
+		}
+		try {
+			TimeUnit.SECONDS.sleep(1);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			log.warn(e);
 		}
 		System.out.println("End of Line");
 		// TODO add any networking data transfer needed
 	}
 
 	public static void logInMenu() {
-		// NOTE This is the first menu the user will see.
-		// Here the user will log in or create a new account
-		// Eventually an employee will be able to create an
-		// employee account using a 'supervisor' passcode
-		// 'passcode'
 
 		int stayOn = 1;
 		while (stayOn == 1) {
@@ -99,6 +123,7 @@ public class ProgramOperations {
 
 			User newUser = new User(testUserName, password, firstName, lastName, accessLevel);
 			LocalUserData.userDataBase.put(testUserName, newUser);
+			LocalUserData.userDataBaseIndex.add(testUserName);
 			try {
 				TimeUnit.SECONDS.sleep(1);
 			} catch (InterruptedException e) {

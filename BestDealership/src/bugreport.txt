@@ -1,1 +1,1 @@
-- 'to view your current owned vehicles and offers' - all offers from every user displays
+Nested while loops happen when passwords are not correctly entered
